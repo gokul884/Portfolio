@@ -90,8 +90,8 @@ export default function AdminPanel({
   const [blogReadTime, setBlogReadTime] = useState('5 min read');
   const [blogDate, setBlogDate] = useState('');
   const [blogImage, setBlogImage] = useState('');
-  const [blogAuthorName, setBlogAuthorName] = useState('Antor Roy');
-  const [blogAuthorRole, setBlogAuthorRole] = useState('Lead UI/UX Designer');
+  const [blogAuthorName, setBlogAuthorName] = useState('Gokul Krisnan');
+  const [blogAuthorRole, setBlogAuthorRole] = useState('Digital Marketer');
   const [blogAuthorAvatar, setBlogAuthorAvatar] = useState('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80');
 
   // Check Local Storage on load for previous login
@@ -163,8 +163,8 @@ export default function AdminPanel({
     setBlogReadTime('5 min read');
     setBlogDate(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
     setBlogImage('');
-    setBlogAuthorName('Antor Roy');
-    setBlogAuthorRole('Lead UI/UX Designer');
+    setBlogAuthorName('Gokul Krisnan');
+    setBlogAuthorRole('Digital Marketer');
     setBlogAuthorAvatar('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80');
 
     setIsFormOpen(true);
@@ -203,8 +203,8 @@ export default function AdminPanel({
       setBlogReadTime(item.readTime || '5 min read');
       setBlogDate(item.date || '');
       setBlogImage(item.imageUrl || '');
-      setBlogAuthorName(item.author?.name || 'Antor Roy');
-      setBlogAuthorRole(item.author?.role || 'Lead UI/UX Designer');
+      setBlogAuthorName(item.author?.name || 'Gokul Krisnan');
+      setBlogAuthorRole(item.author?.role || 'Digital Marketer');
       setBlogAuthorAvatar(item.author?.avatarUrl || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80');
     }
 
@@ -408,7 +408,7 @@ export default function AdminPanel({
               <Key className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h2 className="text-sm font-bold tracking-wider uppercase font-display">TBD Antor - Admin Panel</h2>
+              <h2 className="text-sm font-bold tracking-wider uppercase font-display">Gokul Krisnan - Admin Panel</h2>
               <p className="text-[10px] text-stone-400">Live Database Dashboard Engine</p>
             </div>
           </div>
@@ -909,7 +909,7 @@ export default function AdminPanel({
                                         </div>
                                       </td>
                                       <td className="px-5 py-3 font-bold text-stone-900 max-w-[200px] truncate">{item.title}</td>
-                                      <td className="px-5 py-3 text-stone-600">{item.author?.name || 'Antor Roy'}</td>
+                                      <td className="px-5 py-3 text-stone-600">{item.author?.name || 'Gokul Krisnan'}</td>
                                       <td className="px-5 py-3 text-right space-x-1.5 whitespace-nowrap">
                                         <button 
                                           onClick={() => handleOpenEditForm(item)}

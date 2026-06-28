@@ -12,7 +12,6 @@ export default function Footer({ onOpenContact }: FooterProps) {
     { label: 'Service', href: '#service' },
     { label: 'Works', href: '#works' },
     { label: 'Experiences', href: '#experiences' },
-    { label: 'Testimonials', href: '#testimonials' },
     { label: 'Blog', href: '#blog' },
   ];
 
@@ -107,7 +106,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
         {/* Brand Copyright */}
         <div className="text-center text-xs text-stone-500 font-medium">
           <p>
-            TBD Antor © Copyright | All rights reserved. {currentYear}
+            Gokul Krisnan © Copyright | All rights reserved. {currentYear}
           </p>
         </div>
 

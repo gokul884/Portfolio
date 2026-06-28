@@ -77,23 +77,6 @@ export default function Experiences() {
           ))}
         </div>
 
-        {/* Skills Tools Stack visuals */}
-        <div className="mt-16 pt-10 border-t border-stone-200/50">
-          <p className="text-center text-xs font-semibold uppercase tracking-wider text-stone-400 mb-8">
-            Expertise across Industry Standard Stack
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-60">
-            {['Figma', 'Sketch', 'Adobe XD', 'Photoshop', 'Webflow', 'TailwindCSS', 'React', 'TypeScript'].map((tech) => (
-              <span
-                key={tech}
-                className="text-stone-700 font-display font-semibold text-sm md:text-base tracking-wide hover:opacity-100 transition-opacity select-none cursor-default"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   );

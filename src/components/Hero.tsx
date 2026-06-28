@@ -29,22 +29,23 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
           </motion.div>
 
           {/* Heading */}
-          <div className="space-y-2">
+          <div className="space-y-4">
             <motion.h1
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display text-stone-900 tracking-tight leading-none"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display text-stone-900 tracking-tight leading-tight"
             >
-              Hey, I'm Antor
+              Hey, I'm <br />
+              Gokul Krisnan
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display text-stone-900 leading-none"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 leading-tight"
             >
-              I'm a <span className="italic text-[#FF5B22] font-extrabold select-none">Designer</span>
+              I'm a <span className="italic text-[#FF5B22] font-extrabold select-none">Digital Marketer</span>
             </motion.div>
           </div>
 
@@ -55,7 +56,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-stone-600 text-base md:text-lg max-w-xl leading-relaxed font-normal"
           >
-            I'm Antor, UI Designer passionate about creating simple, intuitive designs that enhance user experience across web and mobile platforms.
+            I'm Gokul Krisnan, a Digital Marketer passionate about driving growth, optimizing digital strategies, and creating high-impact online campaigns.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -126,7 +127,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
             
             <img
               src={heroPhotoUrl || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80"}
-              alt="Antor - Portrait"
+              alt="Gokul Krisnan - Portrait"
               className="w-full h-full object-cover transform scale-102 group-hover:scale-104 transition-transform duration-700 select-none filter contrast-[1.02]"
               referrerPolicy="no-referrer"
             />

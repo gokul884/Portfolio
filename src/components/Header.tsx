@@ -13,7 +13,6 @@ export default function Header({ onOpenContact }: HeaderProps) {
     { label: 'Service', href: '#service' },
     { label: 'Works', href: '#works' },
     { label: 'Experiences', href: '#experiences' },
-    { label: 'Testimonials', href: '#testimonials' },
     { label: 'Blog', href: '#blog' },
   ];
 
@@ -22,13 +21,8 @@ export default function Header({ onOpenContact }: HeaderProps) {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <a id="logo-link" href="#home" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-[#FF5B22] flex items-center justify-center text-white font-bold text-base font-display transform group-hover:scale-105 transition-transform">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4.5 h-4.5">
-              <path d="M12 2L2 12h10v10l10-10H12V2z" />
-            </svg>
-          </div>
           <span className="font-display font-bold text-xl text-stone-900 tracking-tight">
-            TBD Antor
+            Gokul Krisnan
           </span>
         </a>
 

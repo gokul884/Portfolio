@@ -165,8 +165,8 @@ export const BLOGS_DATA: BlogPostItem[] = [
     date: 'June 24, 2026',
     imageUrl: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Antor Roy',
-      role: 'Lead UI/UX Designer',
+      name: 'Gokul Krisnan',
+      role: 'Digital Marketer',
       avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80',
     },
   },
@@ -191,8 +191,8 @@ export const BLOGS_DATA: BlogPostItem[] = [
     date: 'June 18, 2026',
     imageUrl: 'https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Antor Roy',
-      role: 'Lead UI/UX Designer',
+      name: 'Gokul Krisnan',
+      role: 'Digital Marketer',
       avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80',
     },
   },
@@ -217,8 +217,8 @@ export const BLOGS_DATA: BlogPostItem[] = [
     date: 'June 12, 2026',
     imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Antor Roy',
-      role: 'Lead UI/UX Designer',
+      name: 'Gokul Krisnan',
+      role: 'Digital Marketer',
       avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80',
     },
   },

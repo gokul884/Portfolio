@@ -4,12 +4,11 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Works from './components/Works';
 import Experiences from './components/Experiences';
-import Testimonials from './components/Testimonials';
 import Blog from './components/Blog';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import AdminPanel from './components/AdminPanel';
-import { ArrowUp, Sparkles, MessageSquare, Settings } from 'lucide-react';
+import { ArrowUp, Sparkles, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useFirestoreCollection } from './hooks/useFirestoreCollection';
 import { SERVICES_DATA, WORKS_DATA, TESTIMONIALS_DATA, BLOGS_DATA } from './data';
@@ -127,9 +126,6 @@ export default function App() {
         {/* Skills Track & Experience Panel */}
         <Experiences />
 
-        {/* Customer Feedbacks */}
-        <Testimonials />
-
         {/* Latest Stories & Insights (Blog) */}
         <Blog />
       </main>
@@ -156,22 +152,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Admin Panel Trigger Floating Button */}
-      <div className="fixed bottom-6 left-6 z-40">
-        <motion.button
-          id="admin-panel-trigger"
-          onClick={() => setIsAdminOpen(true)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="p-3.5 bg-stone-900 hover:bg-[#FF5B22] text-white rounded-full shadow-xl transition-all cursor-pointer flex items-center justify-center group relative border border-stone-800"
-          title="Admin Control Center"
-        >
-          <Settings className="w-5 h-5" />
-          <span className="absolute left-full ml-3 px-3 py-1 bg-stone-900 text-white text-xs font-semibold rounded-lg shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            Admin Database Panel
-          </span>
-        </motion.button>
-      </div>
+
 
       {/* Quick Action Floating Widget */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
