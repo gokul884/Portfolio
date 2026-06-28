@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, Lock, Key, Image, Plus, Trash2, Edit, Check, Star, 
-  RefreshCw, Layers, Monitor, Smartphone, Layout, LogOut, Sparkles, MessageSquare, BookOpen, AlertCircle, Briefcase
+  RefreshCw, Layers, Monitor, Smartphone, Layout, LogOut, Sparkles, MessageSquare, BookOpen, AlertCircle, Briefcase, Upload
 } from 'lucide-react';
 import { 
   collection, doc, setDoc, addDoc, updateDoc, deleteDoc, getDocs 
 } from 'firebase/firestore';
 import { db } from '../firebase';
+import ImageCropperModal from './ImageCropperModal';
 import { 
   SERVICES_DATA, WORKS_DATA, TESTIMONIALS_DATA, BLOGS_DATA, SKILLS_DATA 
 } from '../data';
@@ -53,6 +54,36 @@ export default function AdminPanel({
   // Form States
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<any | null>(null); // holds item being edited, or null for adding
+
+  // Image Cropper States
+  const [isCropperOpen, setIsCropperOpen] = useState(false);
+  const [cropperImage, setCropperImage] = useState('');
+  const [cropperAspect, setCropperAspect] = useState(1);
+  const [cropperLabel, setCropperLabel] = useState('1:1 Square');
+  const [cropperCallback, setCropperCallback] = useState<((croppedUrl: string) => void) | null>(null);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const triggerDeviceUpload = (aspect: number, label: string, onCropped: (url: string) => void) => {
+    setCropperAspect(aspect);
+    setCropperLabel(label);
+    setCropperCallback(() => onCropped);
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleDeviceFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setCropperImage(reader.result as string);
+      setIsCropperOpen(true);
+      e.target.value = ''; // Reset
+    };
+    reader.readAsDataURL(file);
+  };
 
   // Hero Section State
   const [heroPhotoInput, setHeroPhotoInput] = useState(currentHeroPhoto);
@@ -617,15 +648,25 @@ export default function AdminPanel({
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                         <div className="lg:col-span-8 space-y-4">
                           <div className="space-y-1.5">
-                            <label className="text-xs font-bold text-stone-500">Portrait Image URL</label>
-                            <input
-                              type="text"
-                              placeholder="Paste high-res Unsplash or web photo link"
-                              value={heroPhotoInput}
-                              onChange={(e) => setHeroPhotoInput(e.target.value)}
-                              className="w-full bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all text-xs"
-                            />
-                            <p className="text-[10px] text-stone-400">Recommended Aspect Ratio: 3:4 or Portrait. Ensure HTTP Referrer allows embedding.</p>
+                            <label className="text-xs font-bold text-stone-500">Portrait Image (URL or Upload)</label>
+                            <div className="flex gap-2">
+                              <input
+                                type="text"
+                                placeholder="Paste high-res Unsplash or web photo link"
+                                value={heroPhotoInput}
+                                onChange={(e) => setHeroPhotoInput(e.target.value)}
+                                className="flex-1 bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all text-xs"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => triggerDeviceUpload(3/4, "3:4 Portrait", (url) => setHeroPhotoInput(url))}
+                                className="bg-stone-900 hover:bg-[#FF5B22] text-white font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                              >
+                                <Upload className="w-3.5 h-3.5" />
+                                <span>Upload & Crop</span>
+                              </button>
+                            </div>
+                            <p className="text-[10px] text-stone-400">Recommended Aspect Ratio: 3:4 Portrait. Supports camera capture or device files.</p>
                           </div>
 
                           <div className="flex items-center gap-3 pt-2">
@@ -1053,15 +1094,25 @@ export default function AdminPanel({
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-stone-500">Feature Image Thumbnail URL</label>
-                        <input
-                          type="text"
-                          required
-                          value={workImage}
-                          onChange={(e) => setWorkImage(e.target.value)}
-                          placeholder="Unsplash high-res image address"
-                          className="w-full bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all"
-                        />
+                        <label className="text-xs font-bold text-stone-500">Feature Image (URL or Upload)</label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            required
+                            value={workImage}
+                            onChange={(e) => setWorkImage(e.target.value)}
+                            placeholder="Unsplash high-res image address or upload below"
+                            className="flex-1 bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => triggerDeviceUpload(3/2, "3:2 Landscape", (url) => setWorkImage(url))}
+                            className="bg-stone-900 hover:bg-[#FF5B22] text-white font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                          >
+                            <Upload className="w-3.5 h-3.5" />
+                            <span>Upload & Crop</span>
+                          </button>
+                        </div>
                       </div>
 
                       <div className="space-y-1.5">
@@ -1158,15 +1209,25 @@ export default function AdminPanel({
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-stone-500">Avatar Image Address</label>
-                        <input
-                          type="text"
-                          required
-                          value={testAvatar}
-                          onChange={(e) => setTestAvatar(e.target.value)}
-                          placeholder="Paste client photo URL"
-                          className="w-full bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all"
-                        />
+                        <label className="text-xs font-bold text-stone-500">Avatar Image (URL or Upload)</label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            required
+                            value={testAvatar}
+                            onChange={(e) => setTestAvatar(e.target.value)}
+                            placeholder="Paste client photo URL or upload below"
+                            className="flex-1 bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => triggerDeviceUpload(1/1, "1:1 Square", (url) => setTestAvatar(url))}
+                            className="bg-stone-900 hover:bg-[#FF5B22] text-white font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                          >
+                            <Upload className="w-3.5 h-3.5" />
+                            <span>Upload & Crop</span>
+                          </button>
+                        </div>
                       </div>
 
                       <div className="space-y-1.5">
@@ -1235,15 +1296,25 @@ export default function AdminPanel({
                       </div>
 
                       <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-stone-500">Cover Banner Image URL</label>
-                        <input
-                          type="text"
-                          required
-                          value={blogImage}
-                          onChange={(e) => setBlogImage(e.target.value)}
-                          placeholder="Cover landscape image address"
-                          className="w-full bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all"
-                        />
+                        <label className="text-xs font-bold text-stone-500">Cover Banner Image (URL or Upload)</label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            required
+                            value={blogImage}
+                            onChange={(e) => setBlogImage(e.target.value)}
+                            placeholder="Cover landscape image address or upload below"
+                            className="flex-1 bg-stone-50 border border-stone-200 focus:border-stone-900 focus:bg-white rounded-xl py-2.5 px-4 text-stone-800 outline-none transition-all"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => triggerDeviceUpload(16/9, "16:9 Landscape", (url) => setBlogImage(url))}
+                            className="bg-stone-900 hover:bg-[#FF5B22] text-white font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                          >
+                            <Upload className="w-3.5 h-3.5" />
+                            <span>Upload & Crop</span>
+                          </button>
+                        </div>
                       </div>
 
                       <div className="space-y-1.5">
@@ -1296,14 +1367,24 @@ export default function AdminPanel({
                           </div>
                         </div>
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-bold text-stone-500">Author Avatar URL</label>
-                          <input
-                            type="text"
-                            required
-                            value={blogAuthorAvatar}
-                            onChange={(e) => setBlogAuthorAvatar(e.target.value)}
-                            className="w-full bg-white border border-stone-200 focus:border-stone-900 rounded-lg py-2 px-3 text-stone-800 outline-none text-xs"
-                          />
+                          <label className="text-[10px] font-bold text-stone-500">Author Avatar (URL or Upload)</label>
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              required
+                              value={blogAuthorAvatar}
+                              onChange={(e) => setBlogAuthorAvatar(e.target.value)}
+                              className="flex-1 bg-white border border-stone-200 focus:border-stone-900 rounded-lg py-2 px-3 text-stone-800 outline-none text-xs"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => triggerDeviceUpload(1/1, "1:1 Square", (url) => setBlogAuthorAvatar(url))}
+                              className="bg-stone-900 hover:bg-[#FF5B22] text-white font-semibold px-3 py-2 rounded-lg text-[10px] transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                            >
+                              <Upload className="w-3 h-3" />
+                              <span>Upload & Crop</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1332,6 +1413,29 @@ export default function AdminPanel({
           </div>
         )}
       </motion.div>
+
+      {/* Hidden File Input for Device Uploads */}
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleDeviceFileChange}
+        accept="image/*"
+        className="hidden"
+      />
+
+      {/* Dynamic Image Cropper Modal */}
+      <ImageCropperModal
+        isOpen={isCropperOpen}
+        onClose={() => setIsCropperOpen(false)}
+        imageSrc={cropperImage}
+        aspectRatio={cropperAspect}
+        aspectRatioLabel={cropperLabel}
+        onCropComplete={(croppedUrl) => {
+          if (cropperCallback) {
+            cropperCallback(croppedUrl);
+          }
+        }}
+      />
     </div>
   );
 }

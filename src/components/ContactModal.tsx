@@ -13,7 +13,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    projectType: 'Website Design',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,7 +32,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         await addDoc(collection(db, 'contacts'), {
           name: formData.name,
           email: formData.email,
-          projectType: formData.projectType,
           message: formData.message,
           createdAt: new Date().toISOString()
         });
@@ -58,7 +56,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setFormData({
       name: '',
       email: '',
-      projectType: 'Website Design',
       message: '',
     });
     setIsSubmitted(false);
@@ -148,22 +145,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
                 </div>
 
-                {/* Select Service */}
-                <div className="space-y-1.5">
-                  <label className="block text-xs font-medium text-stone-700">Project Type</label>
-                  <select
-                    id="contact-project-type"
-                    value={formData.projectType}
-                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-950 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/30 focus:border-[#FF5B22] transition-all"
-                  >
-                    <option value="Website Design">Website Design</option>
-                    <option value="Responsive Design">Responsive Design</option>
-                    <option value="Mobile App Design">Mobile App Design</option>
-                    <option value="Design System">Design System</option>
-                  </select>
-                </div>
-
                 {/* Textarea Message */}
                 <div className="space-y-1.5">
                   <label className="block text-xs font-medium text-stone-700">Project Details *</label>
@@ -216,8 +197,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   Message Sent Successfully!
                 </h4>
                 <p className="text-stone-600 text-sm max-w-sm">
-                  Thank you, <span className="font-semibold">{formData.name}</span>! Your request for{' '}
-                  <span className="font-semibold">{formData.projectType}</span> has been received. I'll get back to you at{' '}
+                  Thank you, <span className="font-semibold">{formData.name}</span>! Your request has been received. I'll get back to you at{' '}
                   <span className="font-semibold">{formData.email}</span> within 24 hours.
                 </p>
                 <button
