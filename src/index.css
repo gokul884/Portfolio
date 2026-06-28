@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Custom styles for grid pattern background, animations, and typography */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+/* Subtle dot-grid pattern for a premium designer portfolio look */
+.bg-dot-grid {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.bg-dot-grid-dark {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Decorative grid lines reminiscent of blueprints/wireframes */
+.grid-lines {
+  position: relative;
+}
+
+.grid-lines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+}
+
+.grid-lines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+}
+
+/* Scrollbar styling for a polished look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7f6f2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

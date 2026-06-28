@@ -1,0 +1,331 @@
+{
+  "version": "0.4",
+  "title": "TBD Antor Portfolio - Elementor Template",
+  "type": "page",
+  "content": [
+    {
+      "id": "hero_section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        },
+        "background_background": "classic",
+        "custom_css": ".elementor-element-hero_section { background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px); background-size: 24px 24px; padding: 100px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }"
+      },
+      "elements": [
+        {
+          "id": "hero_column_left",
+          "elType": "column",
+          "settings": {
+            "_column_size": 60
+          },
+          "elements": [
+            {
+              "id": "hero_badge",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='antor-badge'><span class='pulse-dot'></span>AVAILABLE FOR WORKS</div>"
+              }
+            },
+            {
+              "id": "hero_heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Hey, I'm Antor<br>I'm a <span class='orange-italic'>Designer</span>",
+                "header_size": "h1",
+                "typography_typography": "custom",
+                "typography_font_family": "Plus Jakarta Sans",
+                "typography_font_size": {
+                  "size": 68,
+                  "unit": "px"
+                },
+                "typography_font_weight": "800",
+                "typography_line_height": {
+                  "size": 1.1,
+                  "unit": "em"
+                },
+                "title_color": "#1c1917"
+              }
+            },
+            {
+              "id": "hero_bio",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "I'm Antor, UI Designer passionate about creating simple, intuitive designs that enhance user experience across web and mobile platforms."
+              }
+            },
+            {
+              "id": "hero_buttons",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='hero-btn-container'><a href='#contact' class='btn-primary'>Get In Touch Today <span class='arrow'>→</span></a><a href='#works' class='btn-secondary'>See my Portfolio <span class='arrow'>→</span></a></div>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "hero_column_right",
+          "elType": "column",
+          "settings": {
+            "_column_size": 40
+          },
+          "elements": [
+            {
+              "id": "spinning_badge",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='spinning-badge-wrapper'><div class='spinning-text-container'><svg class='spinning-text-svg' viewBox='0 0 100 100'><path id='circlePath' d='M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0'/><text><textPath href='#circlePath'>• CONTACT ME • CONTACT ME • CONTACT ME</textPath></text></svg><div class='inner-arrow'>↗</div></div></div>"
+              }
+            },
+            {
+              "id": "hero_portrait",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='portrait-frame'><div class='portrait-backdrop'></div><img src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80' alt='Antor Designer Portrait' class='portrait-img'/><div class='floating-status-pill'><span class='green-pulse'></span><div><p class='status-title'>Current Status</p><p class='status-value'>Available For Hire</p></div></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "services_section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        }
+      },
+      "elements": [
+        {
+          "id": "services_main_column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "services_title",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='section-header'><div class='antor-badge'>SERVICES</div><h2>My Provided <span class='orange-italic'>Services</span></h2><p>I create clean, user-focused designs that not only solve real problems but also enhance overall digital experiences. By prioritizing usability, clarity, and aesthetic appeal, I ensure that every interface I design is intuitive, functional, and aligned with user needs.</p></div>"
+              }
+            },
+            {
+              "id": "services_grid",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='services-bento-grid'><div class='service-card'><div class='service-icon-circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2' ry='2'></rect><line x1='8' y1='21' x2='16' y2='21'></line><line x1='12' y1='17' x2='12' y2='21'></line></svg></div><h3>Website Design</h3><p>I design modern, responsive websites that combine clean visuals with user-friendly functionality. My focus is on creating seamless experiences that reflect your brand and engage your audience.</p></div><div class='service-card'><div class='service-icon-circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2' ry='2'></rect><line x1='12' y1='18' x2='12.01' y2='18'></line></svg></div><h3>Responsive Design</h3><p>I design interfaces that adapt seamlessly across all screen sizes and devices. This ensures a consistent and user-friendly experience whether visitors are on desktop, tablet, or mobile.</p></div><div class='service-card'><div class='service-icon-circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'></polygon><polyline points='2 17 12 22 22 17'></polyline><polyline points='2 12 12 17 22 12'></polyline></svg></div><h3>Mobile App Design</h3><p>I craft intuitive and engaging mobile app interfaces that prioritize usability and user experience. Each design is optimized for performance, clarity, and seamless interaction on both iOS and Android platforms.</p></div><div class='service-card'><div class='service-icon-circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2' ry='2'></rect><line x1='9' y1='3' x2='9' y2='21'></line><line x1='9' y1='9' x2='21' y2='9'></line><line x1='9' y1='15' x2='21' y2='15'></line></svg></div><h3>Design System</h3><p>I build scalable design systems that ensure consistency across products. From typography and color to components and interactions, each element is thoughtfully crafted to streamline design and development workflows.</p></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "works_section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        },
+        "background_background": "classic",
+        "background_color": "#0D0E10"
+      },
+      "elements": [
+        {
+          "id": "works_main_column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "works_header",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='works-section-header'><div class='works-flex'><div class='left-content'><div class='antor-badge-dark'>WORKS</div><h2>My Latest <span class='orange-italic'>Works</span></h2><p>Explore a selection of my projects, showcasing diverse designs and creative solutions across digital platforms.</p></div><div class='right-content'><a href='#works' class='btn-primary'>View All Projects →</a></div></div></div>"
+              }
+            },
+            {
+              "id": "works_grid",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='works-showcase-grid'><div class='work-card'><div class='work-img-frame'><img src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80' alt='Digital Agency Showcase'/><div class='sticker-overlay'><div class='spinning-text-overlay'><svg viewBox='0 0 100 100'><path id='clickPath2' d='M 50, 50 m -30, 0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0'/><text><textPath href='#clickPath2'>• CLICK HERE • CLICK HERE</textPath></text></svg><div class='inner-arrow-small'>↗</div></div></div><span class='category-tag'>Web Design</span></div><div class='work-details'><p class='sub-cat'>Digital Agency</p><h3>Digital Agency Landing page</h3><p class='work-desc'>We're a design agency creating impactful solutions through strategy and design. Our designs connect, engage, and elevate your brand.</p><a href='#' class='explore-link'>Explore Showcase ↗</a></div></div><div class='work-card'><div class='work-img-frame'><img src='https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80' alt='Banking Solution Showcase'/><span class='category-tag'>UI/UX Design</span></div><div class='work-details'><p class='sub-cat'>Fintech App</p><h3>Banking Solution Header</h3><p class='work-desc'>A clean, secure, and user-friendly design that highlights key banking services and makes navigation simple for users.</p><a href='#' class='explore-link'>Explore Showcase ↗</a></div></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "experiences_section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        }
+      },
+      "elements": [
+        {
+          "id": "exp_main_column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "exp_title",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='section-header'><div class='antor-badge'>EXPERIENCES</div><h2>My Skills that Shine <span class='orange-italic'>Expertise You Can Trust</span></h2><p>I've developed strong skills in a range of tools, allowing me to create effective, innovative, and user-focused digital solutions.</p></div>"
+              }
+            },
+            {
+              "id": "exp_grid",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='skills-triple-grid'><div class='skill-card'><div class='service-icon-circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='3' width='20' height='14' rx='2' ry='2'></rect><line x1='8' y1='21' x2='16' y2='21'></line><line x1='12' y1='17' x2='12' y2='21'></line></svg></div><h3>Website Design</h3><p>With more than 2+ years of premium experience in this field, delivering modern, fast, and visually captivating websites that users love.</p></div><div class='skill-card'><div class='service-icon-circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='2' width='14' height='20' rx='2' ry='2'></rect><line x1='12' y1='18' x2='12.01' y2='18'></line></svg></div><h3>Responsive Design</h3><p>With more than 1.5+ years of experience in this field, refining layouts to ensure smooth operations across mobile, tablet, and desktop viewports.</p></div><div class='skill-card'><div class='service-icon-circle'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2' ry='2'></rect><line x1='9' y1='3' x2='9' y2='21'></line><line x1='9' y1='9' x2='21' y2='9'></line><line x1='9' y1='15' x2='21' y2='15'></line></svg></div><h3>Design System</h3><p>With more than 1+ years of building and maintaining modular, token-based design systems that scale perfectly for product lines.</p></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "testimonials_section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        }
+      },
+      "elements": [
+        {
+          "id": "testimonials_main_column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "testimonials_title",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='section-header'><div class='antor-badge'>TESTIMONIALS</div><h2>What Our <span class='orange-italic'>Customers</span> Saying</h2><p>Hear directly from our clients about their experiences working with us. Their feedback reflects our commitment to quality, creativity, and results that make a real impact.</p></div>"
+              }
+            },
+            {
+              "id": "testimonials_masonry",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='testimonials-triple-grid'><div class='testimonial-card'><div class='card-meta'><span class='platform-badge linkedin'>in</span><span class='time-ago'>2 mins ago</span></div><p class='testimonial-text'>\"Working with this team was seamless. They understood our vision and delivered exactly what we needed—on time and beyond expectations.\"</p><div class='stars'>★★★★★</div><div class='user-profile'><img src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80' alt='Sarah'/><div class='user-info'><h4>Sarah M.</h4><p>Marketing Director at <span class='hl'>Nexus Media</span></p></div></div></div><div class='testimonial-card'><div class='card-meta'><span class='platform-badge linkedin'>in</span><span class='time-ago'>3 days ago</span></div><p class='testimonial-text'>\"Their design work elevated our brand presence. Every detail was thoughtful, and the user experience was smooth and engaging.\"</p><div class='stars'>★★★★★</div><div class='user-profile'><img src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80' alt='Jason'/><div class='user-info'><h4>Jason R.</h4><p>Marketing Director at <span class='hl'>Apex Growth</span></p></div></div></div><div class='testimonial-card'><div class='card-meta'><span class='platform-badge twitter'>𝕏</span><span class='time-ago'>5 days ago</span></div><p class='testimonial-text'>\"We saw a noticeable improvement in engagement after the new site launched. Their approach was strategic, creative, and highly professional.\"</p><div class='stars'>★★★★★</div><div class='user-profile'><img src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80' alt='Fatima'/><div class='user-info'><h4>Fatima A.</h4><p>Business Owner at <span class='hl'>Solstice Boutique</span></p></div></div></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "blog_section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        }
+      },
+      "elements": [
+        {
+          "id": "blog_main_column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "blog_title",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='section-header'><div class='antor-badge'>ARTICLES</div><h2>Latest Stories & <span class='orange-italic'>Insights</span></h2><p>Sharing thoughts, lessons, and deep-dives on modern web design, typography, and frontend engineering craft.</p></div>"
+              }
+            },
+            {
+              "id": "blog_grid",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='blog-showcase-grid'><div class='blog-post-card'><div class='img-wrap'><img src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80' alt='Design Systems'/><span class='blog-tag'>Design Systems</span></div><div class='blog-body'><div class='blog-meta'><span>June 24, 2026</span><span>•</span><span>5 min read</span></div><h3>The Anatomy of a Modern Minimalist Design System</h3><p>Discover how to build lightweight, scaleable, and highly consistent UI components that empower product design teams to ship fast.</p><div class='blog-footer'><div class='blog-author'><img src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80' alt='Author'/><div><h4>Antor Roy</h4><p>Lead UI/UX Designer</p></div></div><span class='read-more'>Read →</span></div></div></div><div class='blog-post-card'><div class='img-wrap'><img src='https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=800&q=80' alt='Typography'/><span class='blog-tag'>Typography</span></div><div class='blog-body'><div class='blog-meta'><span>June 18, 2026</span><span>•</span><span>4 min read</span></div><h3>Why Typography is 90% of Your User Experience</h3><p>A deep dive into hierarchy, line-heights, tracking, and the psychology of reading online. Learn how to pair exquisite typefaces.</p><div class='blog-footer'><div class='blog-author'><img src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80' alt='Author'/><div><h4>Antor Roy</h4><p>Lead UI/UX Designer</p></div></div><span class='read-more'>Read →</span></div></div></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "footer_section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1200
+        }
+      },
+      "elements": [
+        {
+          "id": "footer_main_column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "footer_cta_card",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='footer-cta-container'><div class='antor-badge'>AVAILABLE FOR WORKS</div><h2>Have a Dream <span class='orange-italic'>Project?</span></h2><p>Let's bring your vision to life with impactful design. Get in touch today to build a brand that truly stands out from the competition.</p><a href='#contact' class='btn-primary' style='display: inline-block; margin-top: 24px;'>Contact Me →</a></div>"
+              }
+            },
+            {
+              "id": "footer_bottom_row",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class='footer-bottom-flex'><div class='footer-links'><a href='#home'>Home</a><a href='#service'>Service</a><a href='#works'>Works</a><a href='#experiences'>Experiences</a><a href='#testimonials'>Testimonials</a><a href='#blog'>Blog</a></div><p class='copyright'>TBD Antor © Copyright | All rights reserved. 2026</p></div>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

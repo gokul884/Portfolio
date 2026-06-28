@@ -1,0 +1,117 @@
+{
+  "entities": {
+    "ServiceItem": {
+      "title": "Service Item",
+      "description": "A service offered by the designer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "iconName": { "type": "string" }
+      },
+      "required": ["id", "title", "description", "iconName"]
+    },
+    "WorkItem": {
+      "title": "Work Item",
+      "description": "A project in the portfolio showcase",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "tag": { "type": "string" },
+        "link": { "type": "string" }
+      },
+      "required": ["id", "title", "category", "description", "imageUrl", "tag", "link"]
+    },
+    "SkillItem": {
+      "title": "Skill Item",
+      "description": "A designer skill with experience",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "experience": { "type": "string" },
+        "description": { "type": "string" },
+        "iconName": { "type": "string" }
+      },
+      "required": ["id", "title", "experience", "description", "iconName"]
+    },
+    "TestimonialItem": {
+      "title": "Testimonial Item",
+      "description": "Feedback from a customer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "company": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "rating": { "type": "number" },
+        "text": { "type": "string" },
+        "timeAgo": { "type": "string" },
+        "platform": { "type": "string" }
+      },
+      "required": ["id", "name", "role", "company", "avatarUrl", "rating", "text", "timeAgo", "platform"]
+    },
+    "BlogPostItem": {
+      "title": "Blog Post Item",
+      "description": "An article or dynamic post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "content": { "type": "string" },
+        "category": { "type": "string" },
+        "readTime": { "type": "string" },
+        "date": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "author": { "type": "object" }
+      },
+      "required": ["id", "title", "summary", "content", "category", "readTime", "date", "imageUrl", "author"]
+    },
+    "ContactInquiry": {
+      "title": "Contact Inquiry",
+      "description": "Inquiry submitted by a user",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "projectType": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "projectType", "message"]
+    }
+  },
+  "firestore": {
+    "services": {
+      "schema": "ServiceItem",
+      "description": "Offered designer services"
+    },
+    "works": {
+      "schema": "WorkItem",
+      "description": "Showcase portfolio projects"
+    },
+    "skills": {
+      "schema": "SkillItem",
+      "description": "Designer's expertise list"
+    },
+    "testimonials": {
+      "schema": "TestimonialItem",
+      "description": "Client feedback list"
+    },
+    "blogs": {
+      "schema": "BlogPostItem",
+      "description": "Published blog posts"
+    },
+    "contacts": {
+      "schema": "ContactInquiry",
+      "description": "Contact form submissions"
+    }
+  }
+}

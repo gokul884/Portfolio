@@ -1,0 +1,6 @@
+{
+  "name": "Antor Portfolio",
+  "description": "Professional UI/UX designer and web developer portfolio website showing services, latest works, experiences, and customer testimonials.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

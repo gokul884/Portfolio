@@ -1,0 +1,70 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper: Validates a basic ID
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Helper: Validates string sizes
+    function isStringWithLimit(val, maxLen) {
+      return val is string && val.size() <= maxLen;
+    }
+
+    // Services Collection Rules
+    match /services/{serviceId} {
+      allow read, write: if true;
+    }
+
+    // Works Collection Rules
+    match /works/{workId} {
+      allow read, write: if true;
+    }
+
+    // Skills Collection Rules
+    match /skills/{skillId} {
+      allow read, write: if true;
+    }
+
+    // Testimonials Collection Rules
+    match /testimonials/{testimonialId} {
+      allow read, write: if true;
+    }
+
+    // Blogs Collection Rules
+    match /blogs/{blogId} {
+      allow read, write: if true;
+    }
+
+    // Settings Collection Rules
+    match /settings/{settingsId} {
+      allow read, write: if true;
+    }
+
+    // Connection test collection
+    match /_connection_test_/{id} {
+      allow read: if true;
+    }
+
+    // Contacts (Form Submissions)
+    match /contacts/{contactId} {
+      // Create is allowed for anyone to submit, with rigid validation
+      allow create: if (
+        isValidId(contactId) &&
+        request.resource.data.keys().hasAll(['name', 'email', 'projectType', 'message']) &&
+        request.resource.data.keys().size() <= 6 &&
+        isStringWithLimit(request.resource.data.name, 100) &&
+        isStringWithLimit(request.resource.data.email, 120) &&
+        isStringWithLimit(request.resource.data.projectType, 50) &&
+        isStringWithLimit(request.resource.data.message, 1500)
+      );
+      allow read, update, delete: if false; // Admin-only/strictly denied on client SDK for privacy
+    }
+  }
+}
