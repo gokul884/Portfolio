@@ -16,15 +16,14 @@ export default function Blog() {
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-16">
         {/* Section Header */}
-        <div className="max-w-2xl text-left space-y-4">
+        <div className="max-w-2xl text-center mx-auto space-y-4 flex flex-col items-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/60 border border-orange-200/50 text-[#FF5B22] text-xs font-bold uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5B22] animate-pulse" />
-            <span>Articles</span>
+            <span>Blogs</span>
           </div>
           
           <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
-            Latest Stories & <br />
-            <span className="italic text-[#FF5B22] font-extrabold">Insights</span>
+            Latest <span className="italic text-[#FF5B22] font-extrabold">Blogs</span>
           </h2>
           
           <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal">

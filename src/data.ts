@@ -2,28 +2,28 @@ import { ServiceItem, WorkItem, SkillItem, TestimonialItem, BlogPostItem } from 
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
-    id: 'web-design',
-    title: 'Website Design',
-    description: 'I design modern, responsive websites that combine clean visuals with user-friendly functionality. My focus is on creating seamless experiences that reflect your brand and engage your audience.',
+    id: 'poster-creation',
+    title: 'Poster Creation',
+    description: 'I design high-impact, visually compelling posters and marketing graphics. Combining creative typography with bold visual assets, I create flyers, banners, and digital graphics tailored to elevate your promotional campaigns.',
+    iconName: 'layout',
+  },
+  {
+    id: 'web-building',
+    title: 'Website Building',
+    description: 'I build fully functional, modern, responsive websites tailored to your unique requirements. Integrating clean code with modern design principles, I deliver fast, safe, and user-friendly digital experiences that scale.',
     iconName: 'monitor',
   },
   {
-    id: 'responsive-design',
-    title: 'Responsive Design',
-    description: 'I design interfaces that adapt seamlessly across all screen sizes and devices. This ensures a consistent and user-friendly experience whether visitors are on desktop, tablet, or mobile.',
+    id: 'seo-optimization',
+    title: 'SEO Optimization',
+    description: 'I optimize website structures and contents to improve search engine rankings and increase organic traffic. Through targeted keyword strategies and technical optimizations, I help your business gain maximum online visibility.',
     iconName: 'smartphone',
   },
   {
-    id: 'mobile-app',
-    title: 'Mobile App Design',
-    description: 'I craft intuitive and engaging mobile app interfaces that prioritize usability and user experience. Each design is optimized for performance, clarity, and seamless interaction on both iOS and Android platforms.',
+    id: 'blog-content-creation',
+    title: 'Blog and Content Creation',
+    description: 'I write engaging, informative, and SEO-friendly blog posts and articles. By crafting high-quality content that resonates with your target audience, I boost reader engagement and establish your brand as an industry authority.',
     iconName: 'layers',
-  },
-  {
-    id: 'design-system',
-    title: 'Design System',
-    description: 'I build scalable design systems that ensure consistency across products. From typography and color to components and interactions, each element is thoughtfully crafted to streamline design and development workflows.',
-    iconName: 'layout',
   },
 ];
 
@@ -67,9 +67,9 @@ export const SKILLS_DATA: SkillItem[] = [
   },
   {
     id: 'skill-sys',
-    title: 'Design System',
-    experience: '1+ Years Experience',
-    description: 'With more than 1+ years of building and maintaining modular, token-based design systems that scale perfectly for product lines.',
+    title: 'Poster Creation',
+    experience: '3 months',
+    description: 'With 3 months of focused experience crafting visually striking, high-impact marketing poster designs and graphic assets.',
     iconName: 'layout',
   },
 ];
