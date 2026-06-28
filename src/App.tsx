@@ -21,6 +21,7 @@ export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isAdminRoute, setIsAdminRoute] = useState(false);
   const [heroPhotoUrl, setHeroPhotoUrl] = useState("https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80");
 
   // Fetch Firestore Collections for AdminPanel Sync
@@ -28,6 +29,36 @@ export default function App() {
   const { data: works } = useFirestoreCollection<WorkItem>('works', WORKS_DATA);
   const { data: testimonials } = useFirestoreCollection<TestimonialItem>('testimonials', TESTIMONIALS_DATA);
   const { data: blogs } = useFirestoreCollection<BlogPostItem>('blogs', BLOGS_DATA);
+
+  // Handle URL routing for /admin, #admin, and #/admin
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const path = window.location.pathname;
+      const hash = window.location.hash;
+      const isRouteAdmin = path === '/admin' || hash === '#admin' || hash === '#/admin';
+      setIsAdminRoute(isRouteAdmin);
+      if (isRouteAdmin) {
+        setIsAdminOpen(true);
+      }
+    };
+
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
+
+  const handleCloseAdmin = () => {
+    setIsAdminOpen(false);
+    if (isAdminRoute) {
+      window.history.pushState({}, '', '/');
+      setIsAdminRoute(false);
+    }
+  };
 
   // Subscribe to Dynamic Hero Portrait Photo URL
   useEffect(() => {
@@ -58,6 +89,24 @@ export default function App() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  if (isAdminRoute) {
+    return (
+      <div className="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans selection:bg-[#FF5B22]/10 selection:text-[#FF5B22] antialiased">
+        <AdminPanel 
+          isOpen={true} 
+          onClose={handleCloseAdmin} 
+          currentHeroPhoto={heroPhotoUrl}
+          onUpdateHeroPhoto={(url) => setHeroPhotoUrl(url)}
+          services={services}
+          works={works}
+          testimonials={testimonials}
+          blogs={blogs}
+          isFullPage={true}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans selection:bg-[#FF5B22]/10 selection:text-[#FF5B22] scroll-smooth antialiased">

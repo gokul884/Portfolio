@@ -22,6 +22,7 @@ interface AdminPanelProps {
   works: WorkItem[];
   testimonials: TestimonialItem[];
   blogs: BlogPostItem[];
+  isFullPage?: boolean;
 }
 
 type AdminTab = 'hero' | 'services' | 'works' | 'testimonials' | 'blogs';
@@ -35,6 +36,7 @@ export default function AdminPanel({
   works,
   testimonials,
   blogs,
+  isFullPage = false,
 }: AdminPanelProps) {
   // Passcode verification state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -386,12 +388,18 @@ export default function AdminPanel({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm overflow-y-auto">
+    <div className={isFullPage 
+      ? "fixed inset-0 z-50 bg-[#FAF9F5] overflow-y-auto flex flex-col" 
+      : "fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm overflow-y-auto"
+    }>
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95, y: 15 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="relative bg-white border border-stone-200 shadow-2xl rounded-2xl w-full max-w-5xl overflow-hidden max-h-[90vh] flex flex-col"
+        initial={isFullPage ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 15 }}
+        animate={isFullPage ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
+        exit={isFullPage ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 15 }}
+        className={isFullPage 
+          ? "relative bg-[#FAF9F5] w-full min-h-screen flex flex-col"
+          : "relative bg-white border border-stone-200 shadow-2xl rounded-2xl w-full max-w-5xl overflow-hidden max-h-[90vh] flex flex-col"
+        }
       >
         {/* Header Bar */}
         <div className="flex items-center justify-between bg-stone-950 text-white px-6 py-4.5">
@@ -406,15 +414,17 @@ export default function AdminPanel({
           </div>
           <button 
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-stone-800 text-stone-400 hover:text-white transition-colors cursor-pointer"
+            className="p-1.5 rounded-full hover:bg-stone-800 text-stone-400 hover:text-white transition-colors cursor-pointer flex items-center gap-1 px-3 py-1 bg-stone-900"
+            title="Close Panel"
           >
-            <X className="w-5 h-5" />
+            <span className="text-[10px] uppercase tracking-wider font-semibold mr-1">Close</span>
+            <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Lock screen view */}
         {!isAuthenticated ? (
-          <div className="flex-1 flex flex-col items-center justify-center py-16 px-6 max-w-md mx-auto text-center space-y-6">
+          <div className={`flex-1 flex flex-col items-center justify-center py-16 px-6 max-w-md mx-auto text-center space-y-6 ${isFullPage ? 'w-full' : ''}`}>
             <div className="p-4 bg-orange-100 rounded-full text-[#FF5B22] animate-bounce">
               <Lock className="w-10 h-10" />
             </div>
@@ -468,7 +478,7 @@ export default function AdminPanel({
             </form>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col md:flex-row min-h-0 bg-stone-50">
+          <div className={`flex-1 flex flex-col md:flex-row min-h-0 ${isFullPage ? 'bg-[#FAF9F5]' : 'bg-stone-50'}`}>
             
             {/* Sidebar Navigation */}
             <div className="w-full md:w-56 bg-white border-r border-stone-200 flex flex-col py-4 px-3 space-y-1">
