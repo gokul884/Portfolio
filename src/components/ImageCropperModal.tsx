@@ -33,6 +33,12 @@ export default function ImageCropperModal({
   const viewWidth = 280;
   const viewHeight = Math.round(viewWidth / aspectRatio);
 
+  const baseScale = naturalSize.width > 0 
+    ? Math.max(viewWidth / naturalSize.width, viewHeight / naturalSize.height) 
+    : 1;
+  const w = naturalSize.width * baseScale * zoom;
+  const h = naturalSize.height * baseScale * zoom;
+
   // Reset states on new image or open
   useEffect(() => {
     if (isOpen) {
@@ -71,6 +77,27 @@ export default function ImageCropperModal({
     setOffset({ x: 0, y: 0 }); // reset pan on rotate to avoid weird bounds
   };
 
+  const getFitZoom = () => {
+    if (naturalSize.width === 0) return 1;
+    const fitScale = Math.min(viewWidth / naturalSize.width, viewHeight / naturalSize.height);
+    return fitScale / baseScale;
+  };
+
+  const handleFit = () => {
+    const fitZoom = getFitZoom();
+    setZoom(fitZoom);
+    setOffset({ x: 0, y: 0 });
+  };
+
+  const handleFill = () => {
+    setZoom(1);
+    setOffset({ x: 0, y: 0 });
+  };
+
+  const handleResetPan = () => {
+    setOffset({ x: 0, y: 0 });
+  };
+
   const handleSaveCrop = () => {
     if (!imageRef.current || naturalSize.width === 0) return;
 
@@ -88,50 +115,29 @@ export default function ImageCropperModal({
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
 
-    // Math calculation for cropping
-    // To cover the viewport:
-    const baseScale = Math.max(viewWidth / naturalSize.width, viewHeight / naturalSize.height);
-    const w0 = naturalSize.width * baseScale;
-    const h0 = naturalSize.height * baseScale;
-    
-    const w = w0 * zoom;
-    const h = h0 * zoom;
-
-    // Center coordinates for drawing
-    const imgLeft = (viewWidth - w) / 2 + offset.x;
-    const imgTop = (viewHeight - h) / 2 + offset.y;
+    // Clear background with white to avoid black spaces in jpeg export
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, targetWidth, targetHeight);
 
     const ratio = targetWidth / viewWidth;
 
     ctx.save();
 
-    if (rotation !== 0) {
-      // Move context to center of viewport on canvas
-      ctx.translate(targetWidth / 2, targetHeight / 2);
-      ctx.rotate((rotation * Math.PI) / 180);
-      
-      // Calculate drawing dimensions taking rotation into account
-      // Note: imgLeft/imgTop are relative to top-left of viewport.
-      // Translate them to be relative to the center of the viewport.
-      const centerX = imgLeft + w / 2 - viewWidth / 2;
-      const centerY = imgTop + h / 2 - viewHeight / 2;
+    // Translate to center of canvas, rotate, and then draw image centered with offsets applied
+    ctx.translate(targetWidth / 2, targetHeight / 2);
+    ctx.rotate((rotation * Math.PI) / 180);
+    
+    // Draw relative to rotated canvas origin
+    const drawX = (offset.x * ratio) - (w * ratio / 2);
+    const drawY = (offset.y * ratio) - (h * ratio / 2);
 
-      ctx.drawImage(
-        imageRef.current,
-        centerX * ratio,
-        centerY * ratio,
-        w * ratio,
-        h * ratio
-      );
-    } else {
-      ctx.drawImage(
-        imageRef.current,
-        imgLeft * ratio,
-        imgTop * ratio,
-        w * ratio,
-        h * ratio
-      );
-    }
+    ctx.drawImage(
+      imageRef.current,
+      drawX,
+      drawY,
+      w * ratio,
+      h * ratio
+    );
 
     ctx.restore();
 
@@ -192,15 +198,14 @@ export default function ImageCropperModal({
                   src={imageSrc}
                   alt="Crop preview"
                   onLoad={handleImageLoad}
-                  className="absolute pointer-events-none origin-center max-w-none max-h-none select-none"
+                  className="absolute pointer-events-none origin-center max-w-none max-h-none select-none animate-fade-in"
                   style={{
-                    // Math calculation to dynamically size and scale
-                    width: 'auto',
-                    height: 'auto',
-                    transform: `translate3d(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px), 0) scale(${zoom}) rotate(${rotation}deg)`,
+                    width: `${w}px`,
+                    height: `${h}px`,
+                    transform: `translate3d(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px), 0) rotate(${rotation}deg)`,
                     left: '50%',
                     top: '50%',
-                    transition: isDragging ? 'none' : 'transform 0.1s ease-out',
+                    transition: isDragging ? 'none' : 'transform 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out',
                   }}
                 />
 
@@ -224,13 +229,38 @@ export default function ImageCropperModal({
                 </div>
                 <input
                   type="range"
-                  min="1"
-                  max="3"
+                  min="0.1"
+                  max="5"
                   step="0.01"
                   value={zoom}
                   onChange={(e) => setZoom(parseFloat(e.target.value))}
                   className="w-full accent-[#FF5B22] h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer"
                 />
+              </div>
+
+              {/* Quick Preset Buttons */}
+              <div className="flex flex-wrap gap-2 justify-center pb-1">
+                <button
+                  type="button"
+                  onClick={handleFit}
+                  className="px-2.5 py-1 text-[10px] font-bold bg-white hover:bg-stone-100 hover:text-stone-900 border border-stone-200 text-stone-600 rounded-lg transition-colors cursor-pointer"
+                >
+                  Fit Entire Image
+                </button>
+                <button
+                  type="button"
+                  onClick={handleFill}
+                  className="px-2.5 py-1 text-[10px] font-bold bg-white hover:bg-stone-100 hover:text-stone-900 border border-stone-200 text-stone-600 rounded-lg transition-colors cursor-pointer"
+                >
+                  Fill Crop Area
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResetPan}
+                  className="px-2.5 py-1 text-[10px] font-bold bg-white hover:bg-stone-100 hover:text-stone-900 border border-stone-200 text-stone-600 rounded-lg transition-colors cursor-pointer"
+                >
+                  Reset Position
+                </button>
               </div>
 
               {/* Action Buttons */}
