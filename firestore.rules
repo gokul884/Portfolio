@@ -57,12 +57,12 @@ service cloud.firestore {
       // Create is allowed for anyone to submit, with rigid validation
       allow create: if (
         isValidId(contactId) &&
-        request.resource.data.keys().hasAll(['name', 'email', 'projectType', 'message']) &&
-        request.resource.data.keys().size() <= 6 &&
+        request.resource.data.keys().hasAll(['name', 'email', 'message', 'createdAt']) &&
+        request.resource.data.keys().size() == 4 &&
         isStringWithLimit(request.resource.data.name, 100) &&
         isStringWithLimit(request.resource.data.email, 120) &&
-        isStringWithLimit(request.resource.data.projectType, 50) &&
-        isStringWithLimit(request.resource.data.message, 1500)
+        isStringWithLimit(request.resource.data.message, 1500) &&
+        isStringWithLimit(request.resource.data.createdAt, 50)
       );
       allow read, update, delete: if false; // Admin-only/strictly denied on client SDK for privacy
     }

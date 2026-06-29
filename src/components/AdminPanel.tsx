@@ -127,9 +127,13 @@ export default function AdminPanel({
 
   // Check Local Storage on load for previous login
   useEffect(() => {
-    const isSaved = localStorage.getItem('antor_admin_logged');
-    if (isSaved === 'true') {
-      setIsAuthenticated(true);
+    try {
+      const isSaved = localStorage.getItem('antor_admin_logged');
+      if (isSaved === 'true') {
+        setIsAuthenticated(true);
+      }
+    } catch (e) {
+      console.warn("localStorage is not available", e);
     }
   }, []);
 
@@ -145,7 +149,11 @@ export default function AdminPanel({
       setIsAuthenticated(true);
       setPasscodeError(false);
       if (rememberMe) {
-        localStorage.setItem('antor_admin_logged', 'true');
+        try {
+          localStorage.setItem('antor_admin_logged', 'true');
+        } catch (e) {
+          console.warn("Could not save admin session to localStorage", e);
+        }
       }
     } else {
       setPasscodeError(true);
@@ -155,7 +163,11 @@ export default function AdminPanel({
   const handleLogout = () => {
     setIsAuthenticated(false);
     setPasscode('');
-    localStorage.removeItem('antor_admin_logged');
+    try {
+      localStorage.removeItem('antor_admin_logged');
+    } catch (e) {
+      console.warn("Could not remove admin session from localStorage", e);
+    }
   };
 
   // Open form for Add

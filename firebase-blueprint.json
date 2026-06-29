@@ -81,11 +81,10 @@
       "properties": {
         "name": { "type": "string" },
         "email": { "type": "string" },
-        "projectType": { "type": "string" },
         "message": { "type": "string" },
         "createdAt": { "type": "string", "format": "date-time" }
       },
-      "required": ["name", "email", "projectType", "message"]
+      "required": ["name", "email", "message", "createdAt"]
     }
   },
   "firestore": {

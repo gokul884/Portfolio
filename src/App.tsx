@@ -21,7 +21,14 @@ export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isAdminRoute, setIsAdminRoute] = useState(false);
-  const [heroPhotoUrl, setHeroPhotoUrl] = useState("https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80");
+  const [heroPhotoUrl, setHeroPhotoUrl] = useState<string>(() => {
+    try {
+      return localStorage.getItem('heroPhotoUrl') || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80";
+    } catch (e) {
+      console.warn("localStorage is not available", e);
+      return "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80";
+    }
+  });
 
   // Fetch Firestore Collections for AdminPanel Sync
   const { data: services } = useFirestoreCollection<ServiceItem>('services', SERVICES_DATA);
@@ -64,7 +71,13 @@ export default function App() {
     const docRef = doc(db, 'settings', 'hero');
     const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists() && docSnap.data().photoUrl) {
-        setHeroPhotoUrl(docSnap.data().photoUrl);
+        const url = docSnap.data().photoUrl;
+        setHeroPhotoUrl(url);
+        try {
+          localStorage.setItem('heroPhotoUrl', url);
+        } catch (e) {
+          console.warn("Could not save heroPhotoUrl to localStorage", e);
+        }
       }
     }, (err) => {
       console.warn("Could not load dynamic hero image, using fallback.", err);

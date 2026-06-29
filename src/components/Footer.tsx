@@ -1,4 +1,4 @@
-import { ArrowRight, Globe, Instagram, Twitter } from 'lucide-react';
+import { ArrowRight, Instagram, Twitter } from 'lucide-react';
 
 interface FooterProps {
   onOpenContact: () => void;
@@ -88,16 +88,6 @@ export default function Footer({ onOpenContact }: FooterProps) {
               aria-label="Instagram"
             >
               <Instagram className="w-4.5 h-4.5" />
-            </a>
-            <a
-              id="social-globe-link"
-              href="https://dribbble.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-white border border-stone-200 rounded-full flex items-center justify-center text-stone-700 hover:text-[#FF5B22] hover:border-[#FF5B22]/30 hover:shadow-sm transition-all"
-              aria-label="Website"
-            >
-              <Globe className="w-4.5 h-4.5" />
             </a>
           </div>
 
