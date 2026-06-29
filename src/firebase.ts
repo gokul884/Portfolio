@@ -61,7 +61,7 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
   throw new Error(JSON.stringify(errInfo));
 }
 
-// Connection Validation on startup
+// Connection Validation deferred to run after load to prevent blocking main-thread startup
 async function testConnection() {
   try {
     // Attempt to pull a single document from a allowed path (settings) to verify connection without triggering permissions error
@@ -73,4 +73,13 @@ async function testConnection() {
   }
 }
 
-testConnection();
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'complete') {
+    setTimeout(testConnection, 3000);
+  } else {
+    window.addEventListener('load', () => {
+      setTimeout(testConnection, 3000);
+    });
+  }
+}
+

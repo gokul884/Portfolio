@@ -7,44 +7,51 @@ export function useFirestoreCollection<T>(collectionName: string, fallbackData: 
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const colRef = collection(db, collectionName);
+    let unsubscribe: (() => void) | undefined;
     
-    // Set up real-time listener
-    const unsubscribe = onSnapshot(
-      colRef,
-      (querySnapshot) => {
-        if (!querySnapshot.empty) {
-          const fetchedData: T[] = [];
-          querySnapshot.forEach((doc) => {
-            const docData = doc.data();
-            fetchedData.push({
-              id: doc.id,
-              ...docData,
-            } as unknown as T);
-          });
-          setData(fetchedData);
-        } else {
-          // Collection is empty in Firestore, use fallback data
+    // Delay the establishment of the database listener to keep the initial startup path extremely fast
+    const timer = setTimeout(() => {
+      const colRef = collection(db, collectionName);
+      
+      unsubscribe = onSnapshot(
+        colRef,
+        (querySnapshot) => {
+          if (!querySnapshot.empty) {
+            const fetchedData: T[] = [];
+            querySnapshot.forEach((doc) => {
+              const docData = doc.data();
+              fetchedData.push({
+                id: doc.id,
+                ...docData,
+              } as unknown as T);
+            });
+            setData(fetchedData);
+          } else {
+            // Collection is empty in Firestore, use fallback data
+            setData(fallbackData);
+          }
+          setLoading(false);
+        },
+        (error) => {
+          console.warn(`Firestore subscription failed for '${collectionName}'. Falling back to local data.`);
+          try {
+            handleFirestoreError(error, OperationType.LIST, collectionName);
+          } catch (e) {
+            // Catch and handle
+          }
           setData(fallbackData);
+          setLoading(false);
         }
-        setLoading(false);
-      },
-      (error) => {
-        console.warn(`Firestore subscription failed for '${collectionName}'. Falling back to local data.`);
-        try {
-          handleFirestoreError(error, OperationType.LIST, collectionName);
-        } catch (e) {
-          // Catch and handle
-        }
-        setData(fallbackData);
-        setLoading(false);
-      }
-    );
+      );
+    }, 2000); // Defer by 2 seconds to let initial content render and interactive state settle first
 
     return () => {
-      unsubscribe();
+      clearTimeout(timer);
+      if (unsubscribe) {
+        unsubscribe();
+      }
     };
-  }, [collectionName, fallbackData]);
+  }, [collectionName]);
 
   return { data, loading };
 }

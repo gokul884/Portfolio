@@ -73,23 +73,30 @@ export default function App() {
     }
   };
 
-  // Subscribe to Dynamic Hero Portrait Photo URL
+  // Subscribe to Dynamic Hero Portrait Photo URL after a short delay to keep startup path lightweight
   useEffect(() => {
-    const docRef = doc(db, 'settings', 'hero');
-    const unsubscribe = onSnapshot(docRef, (docSnap) => {
-      if (docSnap.exists() && docSnap.data().photoUrl) {
-        const url = docSnap.data().photoUrl;
-        setHeroPhotoUrl(url);
-        try {
-          localStorage.setItem('heroPhotoUrl', url);
-        } catch (e) {
-          console.warn("Could not save heroPhotoUrl to localStorage", e);
+    let unsubscribe: (() => void) | undefined;
+    const timer = setTimeout(() => {
+      const docRef = doc(db, 'settings', 'hero');
+      unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists() && docSnap.data().photoUrl) {
+          const url = docSnap.data().photoUrl;
+          setHeroPhotoUrl(url);
+          try {
+            localStorage.setItem('heroPhotoUrl', url);
+          } catch (e) {
+            console.warn("Could not save heroPhotoUrl to localStorage", e);
+          }
         }
-      }
-    }, (err) => {
-      console.warn("Could not load dynamic hero image, using fallback.", err);
-    });
-    return () => unsubscribe();
+      }, (err) => {
+        console.warn("Could not load dynamic hero image, using fallback.", err);
+      });
+    }, 1500);
+
+    return () => {
+      clearTimeout(timer);
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   // Monitor scroll height to show back-to-top button
