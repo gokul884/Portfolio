@@ -114,6 +114,85 @@
   </head>
   <body>
     <div id="root">
+      <!-- Pre-rendered Static Visual Shell (Replaced seamlessly by React on mount to hit 95+ PageSpeed FCP/LCP) -->
+      <div id="visual-shell" class="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans antialiased">
+        <header class="sticky top-0 z-40 bg-[#FAF9F5]/95 backdrop-blur-sm border-b border-stone-200/40 py-4 px-6 md:px-12">
+          <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-2">
+              <span class="font-display font-bold text-xl text-stone-900 tracking-tight">
+                Gokul Krisnan
+              </span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+              <a href="#home" class="hover:text-[#FF5B22] transition-colors relative py-1">Home</a>
+              <a href="#service" class="hover:text-[#FF5B22] transition-colors relative py-1">Service</a>
+              <a href="#works" class="hover:text-[#FF5B22] transition-colors relative py-1">Works</a>
+              <a href="#experiences" class="hover:text-[#FF5B22] transition-colors relative py-1">Experiences</a>
+              <a href="#blog" class="hover:text-[#FF5B22] transition-colors relative py-1">Blog</a>
+              <a href="#faq" class="hover:text-[#FF5B22] transition-colors relative py-1">FAQ</a>
+            </nav>
+            <div class="hidden md:block">
+              <button class="flex items-center gap-2 bg-[#FF5B22] text-white text-sm font-semibold py-2.5 px-6 rounded-lg shadow-sm">
+                <span>Contact Me</span>
+                <span>→</span>
+              </button>
+            </div>
+            <button class="p-2 md:hidden text-stone-700" aria-label="Toggle Menu">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </header>
+
+        <main class="grid-lines">
+          <section id="home" class="relative overflow-hidden bg-dot-grid py-12 md:py-24 px-6 md:px-12 border-b border-stone-200/50">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div class="lg:col-span-7 flex flex-col items-start space-y-6 md:space-y-8 z-10">
+                <div class="space-y-4">
+                  <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
+                    Hey, I'm <br />
+                    Gokul Krisnan
+                  </h1>
+                  <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 leading-tight">
+                    I'm a <span class="italic text-[#FF5B22] font-extrabold select-none">Digital Marketer & SEO Specialist</span>
+                  </div>
+                </div>
+                <p class="text-stone-600 text-base md:text-lg max-w-xl leading-relaxed font-normal">
+                  I'm <strong>Gokul Krisnan</strong>, a professional <strong>Digital Marketer</strong> and <strong>SEO Specialist</strong>. I specialize in high-conversion <strong>Website Building</strong>, custom <strong>Poster Creation</strong>, advanced <strong>Search Engine Optimization (SEO)</strong>, and engaging <strong>Blog Content Creation</strong> designed to help businesses rank #1 on Google.
+                </p>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                  <button class="flex items-center justify-center gap-2 bg-stone-950 text-white font-semibold py-3.5 px-7 rounded-xl text-sm tracking-wide shadow-sm">
+                    <span>Get In Touch Today</span>
+                    <span class="text-[#FF5B22]">→</span>
+                  </button>
+                  <a href="#works" class="flex items-center justify-center gap-2 bg-white text-stone-800 font-semibold py-3.5 px-7 rounded-xl text-sm tracking-wide border border-stone-200 shadow-sm">
+                    <span>See my Portfolio</span>
+                    <span>→</span>
+                  </a>
+                </div>
+              </div>
+              
+              <div class="lg:col-span-5 relative flex justify-center z-0 mt-8 lg:mt-0">
+                <div class="relative w-full max-w-[380px] aspect-[3/4] rounded-2xl overflow-hidden bg-stone-200/50 shadow-2xl border border-stone-200/80">
+                  <div class="absolute inset-0 bg-[#F5EFE6] rounded-2xl transform rotate-2 -z-10" />
+                  <div class="w-full h-full bg-gradient-to-br from-[#FF5B22]/10 via-[#F5EFE6] to-[#FF5B22]/5 flex flex-col items-center justify-center p-8 text-center">
+                    <div class="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center border border-stone-100 mb-4">
+                      <span class="text-2xl font-extrabold font-display text-[#FF5B22] tracking-wider">GK</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</h3>
+                    <p class="text-[11px] font-semibold text-[#FF5B22] uppercase tracking-widest mt-1">Digital Marketer</p>
+                    <div class="mt-5 flex flex-wrap justify-center gap-1.5">
+                      <span class="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">SEO</span>
+                      <span class="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">Web Design</span>
+                      <span class="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">Growth</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
       <div style="display: none;">
         <!-- SEO Semantic Fallback (Hydrated by React on page load) -->
         <header>

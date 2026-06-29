@@ -119,6 +119,8 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
                 alt="Gokul Krisnan - Portrait"
                 className="w-full h-full object-cover transform scale-102 group-hover:scale-104 transition-transform duration-700 select-none filter contrast-[1.02]"
                 referrerPolicy="no-referrer"
+                loading="eager"
+                fetchPriority="high"
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-[#FF5B22]/10 via-[#F5EFE6] to-[#FF5B22]/5 flex flex-col items-center justify-center p-8 text-center select-none">
