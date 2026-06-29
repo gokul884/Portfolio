@@ -42,9 +42,9 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={`p-10 md:p-12 flex flex-col items-center text-center gap-6 hover:bg-stone-50/50 transition-colors relative group ${
-                index % 2 === 0 ? 'md:border-r border-stone-200/80' : ''
-              } ${index < 2 ? 'border-b border-stone-200/80' : ''}`}
+              className={`p-10 md:p-12 flex flex-col items-center text-center gap-6 hover:bg-stone-50/50 transition-colors relative group border-stone-200/80 ${
+                index % 2 === 0 ? 'md:border-r' : ''
+              } ${index < 3 ? 'border-b' : ''} ${index === 2 ? 'md:border-b-0' : ''}`}
             >
               {/* Icon Container - Solid orange circle with white glyph */}
               <div className="w-16 h-16 rounded-full bg-[#FF5B22] flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 shadow-md shadow-orange-500/10">
