@@ -1,6 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import LazySection from './components/LazySection';
 
 // Code splitting: Lazy load below-the-fold components
 const Services = lazy(() => import('./components/Services'));
@@ -13,7 +14,7 @@ const ContactModal = lazy(() => import('./components/ContactModal'));
 const AdminPanel = lazy(() => import('./components/AdminPanel'));
 
 import { ArrowUp, Sparkles, MessageSquare } from 'lucide-react';
-import { useFirestoreCollection } from './hooks/useFirestoreCollection';
+import { useFirestoreCollection, registerFirestoreLoad } from './hooks/useFirestoreCollection';
 import { SERVICES_DATA, WORKS_DATA, TESTIMONIALS_DATA, BLOGS_DATA } from './data';
 import { ServiceItem, WorkItem, TestimonialItem, BlogPostItem } from './types';
 
@@ -73,13 +74,18 @@ export default function App() {
   // Subscribe to Dynamic Hero Portrait Photo URL after a short delay to keep startup path lightweight
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
-    const timer = setTimeout(async () => {
+    let isMounted = true;
+
+    const startHeroSubscription = async () => {
       try {
         const { doc, onSnapshot } = await import('firebase/firestore');
         const { db } = await import('./firebase');
         
+        if (!isMounted) return;
+        
         const docRef = doc(db, 'settings', 'hero');
         unsubscribe = onSnapshot(docRef, (docSnap) => {
+          if (!isMounted) return;
           if (docSnap.exists() && docSnap.data().photoUrl) {
             const url = docSnap.data().photoUrl;
             setHeroPhotoUrl(url);
@@ -95,10 +101,15 @@ export default function App() {
       } catch (err) {
         console.warn("Failed to dynamically load firebase in App.tsx:", err);
       }
-    }, 2000);
+    };
+
+    const unsubscribeInteract = registerFirestoreLoad(() => {
+      setTimeout(startHeroSubscription, 100);
+    });
 
     return () => {
-      clearTimeout(timer);
+      isMounted = false;
+      unsubscribeInteract();
       if (unsubscribe) unsubscribe();
     };
   }, []);
@@ -151,35 +162,47 @@ export default function App() {
         <Hero onOpenContact={() => setIsContactOpen(true)} heroPhotoUrl={heroPhotoUrl} />
 
         {/* Services Bento Grid */}
-        <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
-          <Services />
-        </Suspense>
+        <LazySection fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+          <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+            <Services />
+          </Suspense>
+        </LazySection>
 
         {/* Dark Theme Works Gallery */}
-        <Suspense fallback={<div className="min-h-[500px] bg-stone-900" />}>
-          <Works />
-        </Suspense>
+        <LazySection fallback={<div className="min-h-[500px] bg-stone-900" />}>
+          <Suspense fallback={<div className="min-h-[500px] bg-stone-900" />}>
+            <Works />
+          </Suspense>
+        </LazySection>
 
         {/* Skills Track & Experience Panel */}
-        <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
-          <Experiences />
-        </Suspense>
+        <LazySection fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+          <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+            <Experiences />
+          </Suspense>
+        </LazySection>
 
         {/* Latest Stories & Insights (Blog) */}
-        <Suspense fallback={<div className="min-h-[500px] bg-[#FAF9F5]" />}>
-          <Blog />
-        </Suspense>
+        <LazySection fallback={<div className="min-h-[500px] bg-[#FAF9F5]" />}>
+          <Suspense fallback={<div className="min-h-[500px] bg-[#FAF9F5]" />}>
+            <Blog />
+          </Suspense>
+        </LazySection>
 
         {/* Search Engine Optimized FAQ Section */}
-        <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
-          <Faq />
-        </Suspense>
+        <LazySection fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+          <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+            <Faq />
+          </Suspense>
+        </LazySection>
       </main>
 
       {/* Footer Area */}
-      <Suspense fallback={<div className="min-h-[100px] bg-[#FAF9F5]" />}>
-        <Footer onOpenContact={() => setIsContactOpen(true)} />
-      </Suspense>
+      <LazySection fallback={<div className="min-h-[100px] bg-[#FAF9F5]" />}>
+        <Suspense fallback={<div className="min-h-[100px] bg-[#FAF9F5]" />}>
+          <Footer onOpenContact={() => setIsContactOpen(true)} />
+        </Suspense>
+      </LazySection>
 
       {/* Contact Form Popup Modal */}
       <Suspense fallback={null}>

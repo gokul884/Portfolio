@@ -1,23 +1,70 @@
 import { useState, useEffect } from 'react';
 
+// Shared event emitter or active state for interaction
+let interacted = false;
+const listeners = new Set<() => void>();
+
+function handleInteraction() {
+  if (interacted) return;
+  interacted = true;
+  listeners.forEach((cb) => cb());
+  listeners.clear();
+  cleanup();
+}
+
+function cleanup() {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('scroll', handleInteraction);
+    window.removeEventListener('touchstart', handleInteraction);
+    window.removeEventListener('pointerdown', handleInteraction);
+    window.removeEventListener('keydown', handleInteraction);
+  }
+}
+
+if (typeof window !== 'undefined') {
+  const isAdmin = window.location.pathname.includes('/admin') || window.location.hash.includes('admin');
+  if (isAdmin) {
+    interacted = true;
+  } else {
+    window.addEventListener('scroll', handleInteraction, { passive: true });
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+    window.addEventListener('pointerdown', handleInteraction, { passive: true });
+    window.addEventListener('keydown', handleInteraction, { passive: true });
+  }
+}
+
+export function registerFirestoreLoad(cb: () => void): () => void {
+  if (interacted) {
+    cb();
+    return () => {};
+  }
+  listeners.add(cb);
+  return () => {
+    listeners.delete(cb);
+  };
+}
+
 export function useFirestoreCollection<T>(collectionName: string, fallbackData: T[]): { data: T[]; loading: boolean } {
   const [data, setData] = useState<T[]>(fallbackData);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
-    
-    // Delay the establishment of the database listener to keep the initial startup path extremely fast
-    const timer = setTimeout(async () => {
+    let isMounted = true;
+
+    const startFirestore = async () => {
       try {
         const { collection, onSnapshot } = await import('firebase/firestore');
         const { db, handleFirestoreError, OperationType } = await import('../firebase');
         
+        if (!isMounted) return;
+
         const colRef = collection(db, collectionName);
         
         unsubscribe = onSnapshot(
           colRef,
           (querySnapshot) => {
+            if (!isMounted) return;
             if (!querySnapshot.empty) {
               const fetchedData: T[] = [];
               querySnapshot.forEach((doc) => {
@@ -41,19 +88,28 @@ export function useFirestoreCollection<T>(collectionName: string, fallbackData: 
             } catch (e) {
               // Catch and handle
             }
-            setData(fallbackData);
-            setLoading(false);
+            if (isMounted) {
+              setData(fallbackData);
+              setLoading(false);
+            }
           }
         );
       } catch (err) {
         console.warn(`Dynamic load of Firestore failed for '${collectionName}':`, err);
-        setData(fallbackData);
-        setLoading(false);
+        if (isMounted) {
+          setData(fallbackData);
+          setLoading(false);
+        }
       }
-    }, 2500); // Defer by 2.5 seconds to let initial content render and interactive state settle first
+    };
+
+    const unsubscribeInteract = registerFirestoreLoad(() => {
+      startFirestore();
+    });
 
     return () => {
-      clearTimeout(timer);
+      isMounted = false;
+      unsubscribeInteract();
       if (unsubscribe) {
         unsubscribe();
       }
@@ -62,4 +118,3 @@ export function useFirestoreCollection<T>(collectionName: string, fallbackData: 
 
   return { data, loading };
 }
-
