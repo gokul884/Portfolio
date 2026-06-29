@@ -14,20 +14,6 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
         {/* Left Side: Copy */}
         <div className="lg:col-span-7 flex flex-col items-start space-y-6 md:space-y-8 z-10">
           
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100/60 border border-orange-200/80 text-[#FF5B22] text-xs font-semibold uppercase tracking-wider"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#FF5B22] animate-ping" />
-            <span className="w-2 h-2 rounded-full bg-[#FF5B22] absolute" />
-            <span className="ml-1 flex items-center gap-1">
-              <Sparkles className="w-3 h-3" /> Available for Works
-            </span>
-          </motion.div>
-
           {/* Heading */}
           <div className="space-y-4">
             <motion.h1
@@ -45,7 +31,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 leading-tight"
             >
-              I'm a <span className="italic text-[#FF5B22] font-extrabold select-none">Digital Marketer</span>
+              I'm a <span className="italic text-[#FF5B22] font-extrabold select-none">Digital Marketer & SEO Specialist</span>
             </motion.div>
           </div>
 
@@ -56,7 +42,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-stone-600 text-base md:text-lg max-w-xl leading-relaxed font-normal"
           >
-            I'm Gokul Krisnan, a Digital Marketer passionate about driving growth, optimizing digital strategies, and creating high-impact online campaigns.
+            I'm <strong>Gokul Krisnan</strong>, a professional <strong>Digital Marketer</strong> and <strong>SEO Specialist</strong>. I specialize in high-conversion <strong>Website Building</strong>, custom <strong>Poster Creation</strong>, advanced <strong>Search Engine Optimization (SEO)</strong>, and engaging <strong>Blog Content Creation</strong> designed to help businesses rank #1 on Google.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -70,6 +56,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
               id="hero-primary-btn"
               onClick={onOpenContact}
               className="flex items-center justify-center gap-2 bg-stone-950 hover:bg-stone-900 text-white font-semibold py-3.5 px-7 rounded-xl text-sm tracking-wide transition-all duration-300 cursor-pointer shadow-sm"
+              aria-label="Contact Gokul Krisnan for SEO & Digital Marketing Services"
             >
               <span>Get In Touch Today</span>
               <span className="text-[#FF5B22]">→</span>
@@ -78,6 +65,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
               id="hero-secondary-btn"
               href="#works"
               className="flex items-center justify-center gap-2 bg-white hover:bg-stone-50 text-stone-800 font-semibold py-3.5 px-7 rounded-xl text-sm tracking-wide border border-stone-200 transition-all duration-300 cursor-pointer shadow-sm"
+              aria-label="View Gokul Krisnan's Website Design and Marketing Portfolio"
             >
               <span>See my Portfolio</span>
               <span>→</span>
@@ -125,30 +113,31 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
             {/* Elegant warm beige geometric container offset */}
             <div className="absolute inset-0 bg-[#F5EFE6] rounded-2xl transform rotate-2 -z-10 group-hover:rotate-1 transition-transform duration-500" />
             
-            <img
-              src={heroPhotoUrl || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80"}
-              alt="Gokul Krisnan - Portrait"
-              className="w-full h-full object-cover transform scale-102 group-hover:scale-104 transition-transform duration-700 select-none filter contrast-[1.02]"
-              referrerPolicy="no-referrer"
-            />
+            {heroPhotoUrl && !heroPhotoUrl.includes('photo-1506794778202-cad84cf45f1d') ? (
+              <img
+                src={heroPhotoUrl}
+                alt="Gokul Krisnan - Portrait"
+                className="w-full h-full object-cover transform scale-102 group-hover:scale-104 transition-transform duration-700 select-none filter contrast-[1.02]"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-[#FF5B22]/10 via-[#F5EFE6] to-[#FF5B22]/5 flex flex-col items-center justify-center p-8 text-center select-none">
+                <div className="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center border border-stone-100 mb-4 transform group-hover:scale-105 transition-transform duration-500">
+                  <span className="text-2xl font-extrabold font-display text-[#FF5B22] tracking-wider">GK</span>
+                </div>
+                <h3 className="text-lg font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</h3>
+                <p className="text-[11px] font-semibold text-[#FF5B22] uppercase tracking-widest mt-1">Digital Marketer</p>
+                <div className="mt-5 flex flex-wrap justify-center gap-1.5">
+                  <span className="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">SEO</span>
+                  <span className="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">Web Design</span>
+                  <span className="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">Growth</span>
+                </div>
+              </div>
+            )}
             
             {/* Subtle overlay gradient */}
             <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
           </div>
-
-          {/* Mini Tech stack floating element for visuals */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.7 }}
-            className="absolute bottom-6 right-0 md:right-4 bg-white/90 backdrop-blur border border-stone-100 rounded-xl p-3.5 shadow-lg flex items-center gap-3"
-          >
-            <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-            <div className="text-left">
-              <p className="text-[10px] uppercase font-bold tracking-wider text-stone-400">Current Status</p>
-              <p className="text-xs font-semibold text-stone-800">Available For Hire</p>
-            </div>
-          </motion.div>
 
         </div>
       </div>

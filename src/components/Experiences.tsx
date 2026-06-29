@@ -26,18 +26,14 @@ export default function Experiences() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/60 border border-orange-200/50 text-[#FF5B22] text-xs font-bold uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5B22]" />
-            <span>Experiences</span>
-          </div>
           
           <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
-            My Skills that Shine <br />
-            <span className="italic text-[#FF5B22] font-extrabold pl-1">Expertise You Can Trust</span>
+            Core Specialized <br />
+            <span className="italic text-[#FF5B22] font-extrabold pl-1">Professional Skills</span>
           </h2>
           
           <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal">
-            I've developed strong skills in a range of tools, allowing me to create effective, innovative, and user-focused digital solutions.
+            Equipped with industry-leading skills in <strong>advanced SEO tactics</strong>, high-ROI <strong>Google Search optimization</strong>, professional <strong>graphic & poster layouts</strong>, and responsive <strong>website design platforms</strong>.
           </p>
         </div>
 

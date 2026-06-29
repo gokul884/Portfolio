@@ -19,15 +19,11 @@ export default function Works() {
         {/* Header container with flex layout for desktop */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="space-y-4 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-800 border border-stone-700 text-stone-300 text-xs font-bold uppercase tracking-wider">
-              <FolderOpen className="w-3.5 h-3.5 text-[#FF5B22]" />
-              <span>Works</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold font-display tracking-tight text-white">
+            <h2 className="text-3xl md:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
               My Latest <span className="italic text-[#FF5B22] font-extrabold pl-1">Works</span>
             </h2>
             <p className="text-stone-400 text-sm md:text-base leading-relaxed font-normal">
-              Explore a selection of my projects, showcasing diverse designs and creative solutions across digital platforms.
+              Browse through my latest <strong>marketing case studies</strong>, successful <strong>SEO campaigns</strong>, beautiful <strong>website designs</strong>, and creative <strong>visual designs</strong> engineered for max performance.
             </p>
           </div>
           

@@ -14,6 +14,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
     { label: 'Works', href: '#works' },
     { label: 'Experiences', href: '#experiences' },
     { label: 'Blog', href: '#blog' },
+    { label: 'FAQ', href: '#faq' },
   ];
 
   return (

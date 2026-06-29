@@ -5,6 +5,7 @@ import Services from './components/Services';
 import Works from './components/Works';
 import Experiences from './components/Experiences';
 import Blog from './components/Blog';
+import Faq from './components/Faq';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import AdminPanel from './components/AdminPanel';
@@ -23,11 +24,14 @@ export default function App() {
   const [isAdminRoute, setIsAdminRoute] = useState(false);
   const [heroPhotoUrl, setHeroPhotoUrl] = useState<string>(() => {
     try {
-      return localStorage.getItem('heroPhotoUrl') || "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80";
+      const stored = localStorage.getItem('heroPhotoUrl');
+      if (stored && !stored.includes('photo-1506794778202-cad84cf45f1d')) {
+        return stored;
+      }
     } catch (e) {
       console.warn("localStorage is not available", e);
-      return "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80";
     }
+    return "";
   });
 
   // Fetch Firestore Collections for AdminPanel Sync
@@ -141,6 +145,9 @@ export default function App() {
 
         {/* Latest Stories & Insights (Blog) */}
         <Blog />
+
+        {/* Search Engine Optimized FAQ Section */}
+        <Faq />
       </main>
 
       {/* Footer Area */}

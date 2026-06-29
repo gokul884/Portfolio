@@ -120,7 +120,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Gokul Krisnan"
+                      placeholder="Enter your name "
                       className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/30 focus:border-[#FF5B22] transition-all"
                     />
                   </div>

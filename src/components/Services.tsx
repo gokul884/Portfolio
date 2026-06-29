@@ -27,17 +27,13 @@ export default function Services() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/60 border border-orange-200/50 text-[#FF5B22] text-xs font-bold uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5B22]" />
-            <span>Service</span>
-          </div>
           
-          <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight">
-            My Provided <span className="italic text-[#FF5B22] font-extrabold pl-1">Services</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
+            High-Performance <span className="italic text-[#FF5B22] font-extrabold pl-1">SEO & Digital Services</span>
           </h2>
           
           <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal">
-            I create clean, user-focused designs that not only solve real problems but also enhance overall digital experiences. By prioritizing usability, clarity, and aesthetic appeal, I ensure that every interface I design is intuitive, functional, and aligned with user needs.
+            Delivering data-driven <strong>SEO campaigns</strong>, beautiful <strong>website development</strong>, custom high-converting <strong>graphics & poster creation</strong>, and target-focused <strong>blog writing</strong>. Each service is custom tailored to maximize click-through rates, drive user retention, and skyrocket organic search engine rankings.
           </p>
         </div>
 

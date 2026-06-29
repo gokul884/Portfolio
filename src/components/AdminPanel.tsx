@@ -691,7 +691,7 @@ export default function AdminPanel({
                               <span>{isSavingHero ? "Saving changes..." : "Save Photo"}</span>
                             </button>
                             <button
-                              onClick={() => setHeroPhotoInput('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80')}
+                              onClick={() => setHeroPhotoInput('')}
                               className="text-stone-600 hover:text-stone-900 bg-stone-100 hover:bg-stone-200 font-semibold py-2 px-4 rounded-xl text-xs transition-all cursor-pointer"
                             >
                               Reset to Default
@@ -702,17 +702,23 @@ export default function AdminPanel({
                         <div className="lg:col-span-4 flex flex-col items-center">
                           <label className="text-xs font-bold text-stone-500 mb-2 self-start">Active Live Preview</label>
                           <div className="w-full max-w-[180px] aspect-[3/4] rounded-xl overflow-hidden border border-stone-200 shadow-inner bg-stone-50 relative flex items-center justify-center">
-                            {heroPhotoInput ? (
+                            {heroPhotoInput && !heroPhotoInput.includes('photo-1506794778202-cad84cf45f1d') ? (
                               <img
                                 src={heroPhotoInput}
                                 alt="Hero portrait preview"
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
-                                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&h=900&q=80';
+                                  (e.target as HTMLImageElement).src = '';
                                 }}
                               />
                             ) : (
-                              <Image className="w-8 h-8 text-stone-300" />
+                              <div className="w-full h-full bg-gradient-to-br from-[#FF5B22]/10 via-[#F5EFE6] to-[#FF5B22]/5 flex flex-col items-center justify-center p-4 text-center select-none">
+                                <div className="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center border border-stone-100 mb-2">
+                                  <span className="text-sm font-extrabold font-display text-[#FF5B22] tracking-wider">GK</span>
+                                </div>
+                                <h3 className="text-xs font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</h3>
+                                <p className="text-[9px] font-semibold text-[#FF5B22] uppercase tracking-widest mt-0.5">Digital Marketer</p>
+                              </div>
                             )}
                           </div>
                         </div>

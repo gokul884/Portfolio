@@ -13,6 +13,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
     { label: 'Works', href: '#works' },
     { label: 'Experiences', href: '#experiences' },
     { label: 'Blog', href: '#blog' },
+    { label: 'FAQ', href: '#faq' },
   ];
 
   return (
@@ -21,11 +22,6 @@ export default function Footer({ onOpenContact }: FooterProps) {
         
         {/* Upper Grid: CTA "Have a Dream Project?" */}
         <div className="bg-[#F5EFE6]/50 border border-stone-200/60 rounded-3xl p-10 md:p-16 text-center space-y-6 max-w-4xl mx-auto shadow-sm relative overflow-hidden bg-dot-grid">
-          
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/60 border border-orange-200/50 text-[#FF5B22] text-xs font-bold uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5B22] animate-pulse" />
-            <span>Available for Works</span>
-          </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
             Have a Dream <span className="italic text-[#FF5B22] font-extrabold pl-1">Project?</span>
