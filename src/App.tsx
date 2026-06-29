@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Services from './components/Services';
-import Works from './components/Works';
-import Experiences from './components/Experiences';
-import Blog from './components/Blog';
-import Faq from './components/Faq';
-import Footer from './components/Footer';
-import ContactModal from './components/ContactModal';
-import AdminPanel from './components/AdminPanel';
+
+// Code splitting: Lazy load below-the-fold components
+const Services = lazy(() => import('./components/Services'));
+const Works = lazy(() => import('./components/Works'));
+const Experiences = lazy(() => import('./components/Experiences'));
+const Blog = lazy(() => import('./components/Blog'));
+const Faq = lazy(() => import('./components/Faq'));
+const Footer = lazy(() => import('./components/Footer'));
+const ContactModal = lazy(() => import('./components/ContactModal'));
+const AdminPanel = lazy(() => import('./components/AdminPanel'));
+
 import { ArrowUp, Sparkles, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useFirestoreCollection } from './hooks/useFirestoreCollection';
@@ -109,17 +112,19 @@ export default function App() {
   if (isAdminRoute) {
     return (
       <div className="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans selection:bg-[#FF5B22]/10 selection:text-[#FF5B22] antialiased">
-        <AdminPanel 
-          isOpen={true} 
-          onClose={handleCloseAdmin} 
-          currentHeroPhoto={heroPhotoUrl}
-          onUpdateHeroPhoto={(url) => setHeroPhotoUrl(url)}
-          services={services}
-          works={works}
-          testimonials={testimonials}
-          blogs={blogs}
-          isFullPage={true}
-        />
+        <Suspense fallback={<div className="min-h-screen bg-[#FAF9F5] flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-stone-200 border-t-[#FF5B22] animate-spin"></div></div>}>
+          <AdminPanel 
+            isOpen={true} 
+            onClose={handleCloseAdmin} 
+            currentHeroPhoto={heroPhotoUrl}
+            onUpdateHeroPhoto={(url) => setHeroPhotoUrl(url)}
+            services={services}
+            works={works}
+            testimonials={testimonials}
+            blogs={blogs}
+            isFullPage={true}
+          />
+        </Suspense>
       </div>
     );
   }
@@ -135,40 +140,56 @@ export default function App() {
         <Hero onOpenContact={() => setIsContactOpen(true)} heroPhotoUrl={heroPhotoUrl} />
 
         {/* Services Bento Grid */}
-        <Services />
+        <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+          <Services />
+        </Suspense>
 
         {/* Dark Theme Works Gallery */}
-        <Works />
+        <Suspense fallback={<div className="min-h-[500px] bg-stone-900" />}>
+          <Works />
+        </Suspense>
 
         {/* Skills Track & Experience Panel */}
-        <Experiences />
+        <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+          <Experiences />
+        </Suspense>
 
         {/* Latest Stories & Insights (Blog) */}
-        <Blog />
+        <Suspense fallback={<div className="min-h-[500px] bg-[#FAF9F5]" />}>
+          <Blog />
+        </Suspense>
 
         {/* Search Engine Optimized FAQ Section */}
-        <Faq />
+        <Suspense fallback={<div className="min-h-[400px] bg-[#FAF9F5]" />}>
+          <Faq />
+        </Suspense>
       </main>
 
       {/* Footer Area */}
-      <Footer onOpenContact={() => setIsContactOpen(true)} />
+      <Suspense fallback={<div className="min-h-[100px] bg-[#FAF9F5]" />}>
+        <Footer onOpenContact={() => setIsContactOpen(true)} />
+      </Suspense>
 
       {/* Contact Form Popup Modal */}
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <Suspense fallback={null}>
+        <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      </Suspense>
 
       {/* Admin Panel Modal Overlay */}
       <AnimatePresence>
         {isAdminOpen && (
-          <AdminPanel 
-            isOpen={isAdminOpen} 
-            onClose={() => setIsAdminOpen(false)} 
-            currentHeroPhoto={heroPhotoUrl}
-            onUpdateHeroPhoto={(url) => setHeroPhotoUrl(url)}
-            services={services}
-            works={works}
-            testimonials={testimonials}
-            blogs={blogs}
-          />
+          <Suspense fallback={null}>
+            <AdminPanel 
+              isOpen={isAdminOpen} 
+              onClose={() => setIsAdminOpen(false)} 
+              currentHeroPhoto={heroPhotoUrl}
+              onUpdateHeroPhoto={(url) => setHeroPhotoUrl(url)}
+              services={services}
+              works={works}
+              testimonials={testimonials}
+              blogs={blogs}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
 
