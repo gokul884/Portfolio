@@ -16,8 +16,6 @@ import { ArrowUp, Sparkles, MessageSquare } from 'lucide-react';
 import { useFirestoreCollection } from './hooks/useFirestoreCollection';
 import { SERVICES_DATA, WORKS_DATA, TESTIMONIALS_DATA, BLOGS_DATA } from './data';
 import { ServiceItem, WorkItem, TestimonialItem, BlogPostItem } from './types';
-import { doc, onSnapshot } from 'firebase/firestore';
-import { db } from './firebase';
 
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -75,22 +73,29 @@ export default function App() {
   // Subscribe to Dynamic Hero Portrait Photo URL after a short delay to keep startup path lightweight
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
-    const timer = setTimeout(() => {
-      const docRef = doc(db, 'settings', 'hero');
-      unsubscribe = onSnapshot(docRef, (docSnap) => {
-        if (docSnap.exists() && docSnap.data().photoUrl) {
-          const url = docSnap.data().photoUrl;
-          setHeroPhotoUrl(url);
-          try {
-            localStorage.setItem('heroPhotoUrl', url);
-          } catch (e) {
-            console.warn("Could not save heroPhotoUrl to localStorage", e);
+    const timer = setTimeout(async () => {
+      try {
+        const { doc, onSnapshot } = await import('firebase/firestore');
+        const { db } = await import('./firebase');
+        
+        const docRef = doc(db, 'settings', 'hero');
+        unsubscribe = onSnapshot(docRef, (docSnap) => {
+          if (docSnap.exists() && docSnap.data().photoUrl) {
+            const url = docSnap.data().photoUrl;
+            setHeroPhotoUrl(url);
+            try {
+              localStorage.setItem('heroPhotoUrl', url);
+            } catch (e) {
+              console.warn("Could not save heroPhotoUrl to localStorage", e);
+            }
           }
-        }
-      }, (err) => {
-        console.warn("Could not load dynamic hero image, using fallback.", err);
-      });
-    }, 1500);
+        }, (err) => {
+          console.warn("Could not load dynamic hero image, using fallback.", err);
+        });
+      } catch (err) {
+        console.warn("Failed to dynamically load firebase in App.tsx:", err);
+      }
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
