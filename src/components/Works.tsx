@@ -92,12 +92,7 @@ export default function Works() {
                   </span>
                 </div>
 
-                {/* Overlay link button */}
-                <div className="absolute bottom-4 right-4 transition-all duration-300 opacity-100 translate-y-0 lg:opacity-0 lg:group-hover:opacity-100 lg:translate-y-2 lg:group-hover:translate-y-0">
-                  <div className="w-12 h-12 bg-white text-stone-900 rounded-full flex items-center justify-center shadow-xl">
-                    <ArrowUpRight className="w-6 h-6" />
-                  </div>
-                </div>
+
               </div>
 
               {/* Work Details */}
