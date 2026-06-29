@@ -58,6 +58,7 @@ export default function Works() {
                   alt={work.title}
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-104 transition-all duration-700 select-none filter brightness-95 group-hover:brightness-100"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
 
                 {/* Specific sticker widget for 'Digital Agency' card */}

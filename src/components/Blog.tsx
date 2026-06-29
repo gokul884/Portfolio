@@ -67,6 +67,7 @@ export default function Blog() {
                         alt={post.title}
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                         referrerPolicy="no-referrer"
+                        loading="lazy"
                       />
                       <span className="absolute top-4 left-4 text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded bg-[#FF5B22] text-white shadow-sm">
                         {post.category}
@@ -105,6 +106,7 @@ export default function Blog() {
                             alt={post.author.name}
                             className="w-8 h-8 rounded-full object-cover border border-stone-200"
                             referrerPolicy="no-referrer"
+                            loading="lazy"
                           />
                           <div>
                             <p className="text-xs font-bold text-stone-800 leading-none">{post.author.name}</p>

@@ -143,6 +143,7 @@ export default function Testimonials() {
                       alt={testimonial.name}
                       className="w-10 h-10 rounded-full object-cover border border-stone-200 select-none"
                       referrerPolicy="no-referrer"
+                      loading="lazy"
                     />
                     <div>
                       <h4 className="text-sm font-bold text-stone-900 flex items-center gap-1">
