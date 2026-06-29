@@ -1,4 +1,3 @@
-import { motion } from 'motion/react';
 import { ArrowUpRight, Sparkles, Send, Briefcase } from 'lucide-react';
 
 interface HeroProps {
@@ -16,41 +15,29 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
           
           {/* Heading */}
           <div className="space-y-4">
-            <motion.h1
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display text-stone-900 tracking-tight leading-tight"
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display text-stone-900 tracking-tight leading-tight animate-slide-left-1"
             >
               Hey, I'm <br />
               Gokul Krisnan
-            </motion.h1>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 leading-tight"
+            </h1>
+            <div
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 leading-tight animate-slide-left-2"
             >
               I'm a <span className="italic text-[#FF5B22] font-extrabold select-none">Digital Marketer & SEO Specialist</span>
-            </motion.div>
+            </div>
           </div>
 
           {/* Bio */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-stone-600 text-base md:text-lg max-w-xl leading-relaxed font-normal"
+          <p
+            className="text-stone-600 text-base md:text-lg max-w-xl leading-relaxed font-normal animate-fade-in-3"
           >
             I'm <strong>Gokul Krisnan</strong>, a professional <strong>Digital Marketer</strong> and <strong>SEO Specialist</strong>. I specialize in high-conversion <strong>Website Building</strong>, custom <strong>Poster Creation</strong>, advanced <strong>Search Engine Optimization (SEO)</strong>, and engaging <strong>Blog Content Creation</strong> designed to help businesses rank #1 on Google.
-          </motion.p>
+          </p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+          <div
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto animate-slide-up-4"
           >
             <button
               id="hero-primary-btn"
@@ -70,19 +57,16 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
               <span>See my Portfolio</span>
               <span>→</span>
             </a>
-          </motion.div>
+          </div>
         </div>
 
         {/* Right Side: Portrait & Floating Badge */}
         <div className="lg:col-span-5 relative flex justify-center z-0 mt-8 lg:mt-0">
           
           {/* Animated Spinning circular "Contact me" badge */}
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: 'spring', stiffness: 80, delay: 0.5 }}
+          <div
             onClick={onOpenContact}
-            className="absolute top-0 left-0 md:left-4 z-20 cursor-pointer group bg-white rounded-full p-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-stone-100"
+            className="absolute top-0 left-0 md:left-4 z-20 cursor-pointer group bg-white rounded-full p-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-stone-100 animate-scale-in-5"
           >
             <div className="relative w-24 h-24 flex items-center justify-center">
               {/* Spinning Text SVG */}
@@ -106,7 +90,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Portrait frame with soft cream backdrop */}
           <div className="relative w-full max-w-[380px] aspect-[3/4] rounded-2xl overflow-hidden bg-stone-200/50 shadow-2xl border border-stone-200/80 group">

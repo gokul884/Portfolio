@@ -13,7 +13,6 @@ const ContactModal = lazy(() => import('./components/ContactModal'));
 const AdminPanel = lazy(() => import('./components/AdminPanel'));
 
 import { ArrowUp, Sparkles, MessageSquare } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 import { useFirestoreCollection } from './hooks/useFirestoreCollection';
 import { SERVICES_DATA, WORKS_DATA, TESTIMONIALS_DATA, BLOGS_DATA } from './data';
 import { ServiceItem, WorkItem, TestimonialItem, BlogPostItem } from './types';
@@ -183,51 +182,40 @@ export default function App() {
       </Suspense>
 
       {/* Admin Panel Modal Overlay */}
-      <AnimatePresence>
-        {isAdminOpen && (
-          <Suspense fallback={null}>
-            <AdminPanel 
-              isOpen={isAdminOpen} 
-              onClose={() => setIsAdminOpen(false)} 
-              currentHeroPhoto={heroPhotoUrl}
-              onUpdateHeroPhoto={(url) => setHeroPhotoUrl(url)}
-              services={services}
-              works={works}
-              testimonials={testimonials}
-              blogs={blogs}
-            />
-          </Suspense>
-        )}
-      </AnimatePresence>
-
-
+      {isAdminOpen && (
+        <Suspense fallback={null}>
+          <AdminPanel 
+            isOpen={isAdminOpen} 
+            onClose={() => setIsAdminOpen(false)} 
+            currentHeroPhoto={heroPhotoUrl}
+            onUpdateHeroPhoto={(url) => setHeroPhotoUrl(url)}
+            services={services}
+            works={works}
+            testimonials={testimonials}
+            blogs={blogs}
+          />
+        </Suspense>
+      )}
 
       {/* Quick Action Floating Widget */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
         {/* Back To Top */}
-        <AnimatePresence>
-          {showScrollTop && (
-            <motion.button
-              id="back-to-top-btn"
-              initial={{ opacity: 0, scale: 0.8, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 10 }}
-              onClick={scrollToTop}
-              className="p-3 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 hover:text-[#FF5B22] rounded-full shadow-lg transition-all cursor-pointer hover:-translate-y-0.5 active:scale-95"
-              title="Scroll to top"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </motion.button>
-          )}
-        </AnimatePresence>
+        {showScrollTop && (
+          <button
+            id="back-to-top-btn"
+            onClick={scrollToTop}
+            className="p-3 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 hover:text-[#FF5B22] rounded-full shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:scale-95 animate-in fade-in zoom-in-75 duration-200"
+            title="Scroll to top"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </button>
+        )}
 
         {/* Quick Message Floating Button */}
-        <motion.button
+        <button
           id="quick-chat-bubble"
           onClick={() => setIsContactOpen(true)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="p-4 bg-[#FF5B22] hover:bg-[#E04B15] text-white rounded-full shadow-xl transition-all cursor-pointer flex items-center justify-center relative group"
+          className="p-4 bg-[#FF5B22] hover:bg-[#E04B15] hover:scale-105 active:scale-95 text-white rounded-full shadow-xl transition-all duration-300 cursor-pointer flex items-center justify-center relative group"
           title="Direct Inquiry"
         >
           <MessageSquare className="w-6 h-6" />
@@ -236,7 +224,7 @@ export default function App() {
           </span>
           {/* Notification bubble */}
           <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#FAF9F5]" />
-        </motion.button>
+        </button>
       </div>
     </div>
   );
