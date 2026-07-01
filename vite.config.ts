@@ -15,15 +15,15 @@ export default defineConfig(() => {
       minify: 'esbuild',
       cssMinify: true,
       sourcemap: false,
+      modulePreload: {
+        resolveDependencies: () => [],
+      },
       rollupOptions: {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
               if (id.includes('firebase')) {
                 return 'firebase-vendor';
-              }
-              if (id.includes('lucide')) {
-                return 'lucide-vendor';
               }
               if (id.includes('motion')) {
                 return 'motion-vendor';

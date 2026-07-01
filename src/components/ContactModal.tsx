@@ -95,7 +95,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#FF5B22] uppercase tracking-wider mb-1">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#D03F09] uppercase tracking-wider mb-1">
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>Let's collaborate</span>
                   </div>
@@ -121,7 +121,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Enter your name "
-                      className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/30 focus:border-[#FF5B22] transition-all"
+                      className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#D03F09]/30 focus:border-[#D03F09] transition-all"
                     />
                   </div>
                 </div>
@@ -140,7 +140,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="you@example.com"
-                      className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/30 focus:border-[#FF5B22] transition-all"
+                      className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#D03F09]/30 focus:border-[#D03F09] transition-all"
                     />
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Tell me a bit about your goals, budget, or timeline..."
-                      className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/30 focus:border-[#FF5B22] transition-all resize-none"
+                      className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-stone-200 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#D03F09]/30 focus:border-[#D03F09] transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   id="submit-contact-btn"
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 bg-[#FF5B22] hover:bg-[#E04B15] text-white font-medium py-3 px-4 rounded-lg transition-colors cursor-pointer text-sm shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 bg-[#D03F09] hover:bg-[#B03306] text-white font-medium py-3 px-4 rounded-lg transition-colors cursor-pointer text-sm shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

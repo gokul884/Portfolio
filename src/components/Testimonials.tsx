@@ -151,7 +151,7 @@ export default function Testimonials() {
                         <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 fill-emerald-50" />
                       </p>
                       <p className="text-[11px] text-stone-500 font-medium">
-                        {testimonial.role} at <span className="text-[#FF5B22]">{testimonial.company}</span>
+                        {testimonial.role} at <span className="text-[#D03F09]">{testimonial.company}</span>
                       </p>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ export default function Testimonials() {
         {/* Trust badge */}
         <div className="mt-12 text-center flex flex-col sm:flex-row items-center justify-center gap-3 text-stone-500 text-xs font-semibold">
           <span className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-full border border-stone-200 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#FF5B22]" /> 100% Client Satisfaction Guaranteed
+            <Sparkles className="w-3.5 h-3.5 text-[#D03F09]" /> 100% Client Satisfaction Guaranteed
           </span>
           <span className="hidden sm:inline text-stone-300">•</span>
           <span className="bg-white px-3 py-1.5 rounded-full border border-stone-200 shadow-sm">

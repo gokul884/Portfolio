@@ -133,8 +133,8 @@ export default function App() {
 
   if (isAdminRoute) {
     return (
-      <div className="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans selection:bg-[#FF5B22]/10 selection:text-[#FF5B22] antialiased">
-        <Suspense fallback={<div className="min-h-screen bg-[#FAF9F5] flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-stone-200 border-t-[#FF5B22] animate-spin"></div></div>}>
+      <div className="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans selection:bg-[#D03F09]/10 selection:text-[#D03F09] antialiased">
+        <Suspense fallback={<div className="min-h-screen bg-[#FAF9F5] flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-stone-200 border-t-[#D03F09] animate-spin"></div></div>}>
           <AdminPanel 
             isOpen={true} 
             onClose={handleCloseAdmin} 
@@ -152,7 +152,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans selection:bg-[#FF5B22]/10 selection:text-[#FF5B22] scroll-smooth antialiased">
+    <div className="min-h-screen bg-[#FAF9F5] text-stone-900 font-sans selection:bg-[#D03F09]/10 selection:text-[#D03F09] scroll-smooth antialiased">
       {/* Dynamic Floating Navbar */}
       <Header onOpenContact={() => setIsContactOpen(true)} />
 
@@ -232,7 +232,7 @@ export default function App() {
           <button
             id="back-to-top-btn"
             onClick={scrollToTop}
-            className="p-3 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 hover:text-[#FF5B22] rounded-full shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:scale-95 animate-in fade-in zoom-in-75 duration-200"
+            className="p-3 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 hover:text-[#D03F09] rounded-full shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:scale-95 animate-in fade-in zoom-in-75 duration-200"
             title="Scroll to top"
           >
             <ArrowUp className="w-5 h-5" />
@@ -243,7 +243,7 @@ export default function App() {
         <button
           id="quick-chat-bubble"
           onClick={() => setIsContactOpen(true)}
-          className="p-4 bg-[#FF5B22] hover:bg-[#E04B15] hover:scale-105 active:scale-95 text-white rounded-full shadow-xl transition-all duration-300 cursor-pointer flex items-center justify-center relative group"
+          className="p-4 bg-[#D03F09] hover:bg-[#B03306] hover:scale-105 active:scale-95 text-white rounded-full shadow-xl transition-all duration-300 cursor-pointer flex items-center justify-center relative group"
           title="Direct Inquiry"
         >
           <MessageSquare className="w-6 h-6" />

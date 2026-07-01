@@ -210,7 +210,7 @@ export default function ImageCropperModal({
                 />
 
                 {/* Framing guides (Grid overlay) */}
-                <div className="absolute inset-0 border border-[#FF5B22] pointer-events-none rounded-lg" />
+                <div className="absolute inset-0 border border-[#D03F09] pointer-events-none rounded-lg" />
                 <div className="absolute inset-x-0 top-1/3 border-b border-white/10 pointer-events-none" />
                 <div className="absolute inset-x-0 top-2/3 border-b border-white/10 pointer-events-none" />
                 <div className="absolute inset-y-0 left-1/3 border-r border-white/10 pointer-events-none" />
@@ -234,7 +234,7 @@ export default function ImageCropperModal({
                   step="0.01"
                   value={zoom}
                   onChange={(e) => setZoom(parseFloat(e.target.value))}
-                  className="w-full accent-[#FF5B22] h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-[#D03F09] h-1.5 bg-stone-200 rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -285,7 +285,7 @@ export default function ImageCropperModal({
                   <button
                     type="button"
                     onClick={handleSaveCrop}
-                    className="flex items-center gap-1.5 px-5 py-2 bg-[#FF5B22] hover:bg-[#E04B15] text-white font-semibold rounded-xl text-xs shadow-sm transition-all cursor-pointer"
+                    className="flex items-center gap-1.5 px-5 py-2 bg-[#D03F09] hover:bg-[#B03306] text-white font-semibold rounded-xl text-xs shadow-sm transition-all cursor-pointer"
                   >
                     <Check className="w-3.5 h-3.5" />
                     <span>Apply Crop</span>

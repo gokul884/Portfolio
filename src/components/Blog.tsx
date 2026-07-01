@@ -80,15 +80,15 @@ export default function Blog() {
                         {/* Metadata */}
                         <div className="flex items-center gap-4 text-[11px] font-semibold text-stone-400 uppercase tracking-wider">
                           <span className="flex items-center gap-1">
-                            <Calendar className="w-3.5 h-3.5 text-[#FF5B22]" /> {post.date}
+                            <Calendar className="w-3.5 h-3.5 text-[#D03F09]" /> {post.date}
                           </span>
                           <span className="flex items-center gap-1">
-                            <Clock className="w-3.5 h-3.5 text-[#FF5B22]" /> {post.readTime}
+                            <Clock className="w-3.5 h-3.5 text-[#D03F09]" /> {post.readTime}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-lg md:text-xl font-bold font-display text-stone-900 group-hover:text-[#FF5B22] transition-colors leading-snug">
+                        <h3 className="text-lg md:text-xl font-bold font-display text-stone-900 group-hover:text-[#D03F09] transition-colors leading-snug">
                           {post.title}
                         </h3>
 
@@ -117,7 +117,7 @@ export default function Blog() {
                         <button
                           id={`read-post-${post.id}`}
                           onClick={() => handleSelectPost(post)}
-                          className="flex items-center gap-1.5 text-xs font-bold text-[#FF5B22] hover:text-[#E04B15] transition-colors uppercase tracking-wider group/btn cursor-pointer"
+                          className="flex items-center gap-1.5 text-xs font-bold text-[#D03F09] hover:text-[#B03306] transition-colors uppercase tracking-wider group/btn cursor-pointer"
                         >
                           <span>Read</span>
                           <ArrowRight className="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 transition-transform" />
@@ -142,13 +142,13 @@ export default function Blog() {
                 <button
                   id="back-to-blogs-btn"
                   onClick={handleBackToList}
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-500 hover:text-[#FF5B22] transition-colors group cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-500 hover:text-[#D03F09] transition-colors group cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-all" />
                   <span>Back to all articles</span>
                 </button>
 
-                <div className="text-[11px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded bg-[#FF5B22]/10 text-[#FF5B22]">
+                <div className="text-[11px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded bg-[#D03F09]/10 text-[#D03F09]">
                   {selectedPost.category}
                 </div>
               </div>
@@ -176,10 +176,10 @@ export default function Blog() {
 
                   <div className="flex items-center gap-4 text-xs font-semibold text-stone-500 uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
-                      <Calendar className="w-4 h-4 text-[#FF5B22]" /> {selectedPost.date}
+                      <Calendar className="w-4 h-4 text-[#D03F09]" /> {selectedPost.date}
                     </span>
                     <span className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4 text-[#FF5B22]" /> {selectedPost.readTime}
+                      <Clock className="w-4 h-4 text-[#D03F09]" /> {selectedPost.readTime}
                     </span>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export default function Blog() {
                 <button
                   id="bottom-back-to-blogs-btn"
                   onClick={handleBackToList}
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-500 hover:text-[#FF5B22] transition-colors group cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-500 hover:text-[#D03F09] transition-colors group cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-all" />
                   <span>Back to all articles</span>
