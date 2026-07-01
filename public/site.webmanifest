@@ -1,0 +1,16 @@
+{
+  "name": "Gokul Krisnan",
+  "short_name": "Gokul Krisnan",
+  "description": "Professional Digital Marketer & Web Specialist Portfolio",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F5",
+  "theme_color": "#FF5B22"
+}
