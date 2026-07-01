@@ -146,10 +146,10 @@ export default function Testimonials() {
                       loading="lazy"
                     />
                     <div>
-                      <h4 className="text-sm font-bold text-stone-900 flex items-center gap-1">
+                      <p className="text-sm font-bold text-stone-900 flex items-center gap-1">
                         {testimonial.name}
                         <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 fill-emerald-50" />
-                      </h4>
+                      </p>
                       <p className="text-[11px] text-stone-500 font-medium">
                         {testimonial.role} at <span className="text-[#FF5B22]">{testimonial.company}</span>
                       </p>

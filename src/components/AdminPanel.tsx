@@ -716,7 +716,7 @@ export default function AdminPanel({
                                 <div className="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center border border-stone-100 mb-2">
                                   <span className="text-sm font-extrabold font-display text-[#FF5B22] tracking-wider">GK</span>
                                 </div>
-                                <h3 className="text-xs font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</h3>
+                                <p className="text-xs font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</p>
                                 <p className="text-[9px] font-semibold text-[#FF5B22] uppercase tracking-widest mt-0.5">Digital Marketer</p>
                               </div>
                             )}

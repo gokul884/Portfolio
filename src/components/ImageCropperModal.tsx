@@ -163,7 +163,7 @@ export default function ImageCropperModal({
             {/* Header */}
             <div className="flex items-center justify-between border-b border-stone-100 px-5 py-4">
               <div>
-                <h3 className="text-sm font-bold text-stone-900">Crop Image</h3>
+                <p className="text-sm font-bold text-stone-900">Crop Image</p>
                 <p className="text-[10px] text-stone-400 font-medium">Aspect Ratio: {aspectRatioLabel}</p>
               </div>
               <button

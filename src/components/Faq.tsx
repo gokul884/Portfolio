@@ -148,10 +148,10 @@ export default function Faq() {
             {/* Mini Contact CTA Card */}
             <div className="bg-[#FAF9F5] border border-stone-200/60 rounded-2xl p-6 max-w-md space-y-4 shadow-sm">
               <div className="space-y-1">
-                <h4 className="text-xs font-bold text-[#FF5B22] uppercase tracking-wider flex items-center gap-1.5">
+                <p className="text-xs font-bold text-[#FF5B22] uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                   Free SEO Consultation
-                </h4>
+                </p>
                 <p className="text-stone-800 text-sm font-bold">Want a customized audit check of your current website?</p>
                 <p className="text-stone-500 text-xs leading-relaxed font-normal">Let Gokul evaluate your on-page markup, keywords performance, and user experience flaws at zero cost.</p>
               </div>

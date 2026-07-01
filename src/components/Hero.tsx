@@ -111,7 +111,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
                 <div className="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center border border-stone-100 mb-4 transform group-hover:scale-105 transition-transform duration-500">
                   <span className="text-2xl font-extrabold font-display text-[#FF5B22] tracking-wider">GK</span>
                 </div>
-                <h3 className="text-lg font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</h3>
+                <p className="text-lg font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</p>
                 <p className="text-[11px] font-semibold text-[#FF5B22] uppercase tracking-widest mt-1">Digital Marketer</p>
                 <div className="mt-5 flex flex-wrap justify-center gap-1.5">
                   <span className="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">SEO</span>
