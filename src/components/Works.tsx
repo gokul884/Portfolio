@@ -11,7 +11,7 @@ export default function Works() {
     <section id="works" className="py-24 bg-[#0D0E10] text-stone-100 relative overflow-hidden bg-dot-grid-dark border-y border-stone-800">
       
       {/* Decorative light leaks or gradient spots */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#FF5B22]/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#D03F09]/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-orange-500/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -20,7 +20,7 @@ export default function Works() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="space-y-4 max-w-xl">
             <h2 className="text-3xl md:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
-              My Latest <span className="italic text-[#FF5B22] font-extrabold pl-1">Works</span>
+              My Latest <span className="italic text-[#D03F09] font-extrabold pl-1">Works</span>
             </h2>
             <p className="text-stone-400 text-sm md:text-base leading-relaxed font-normal">
               Browse through my latest <strong>marketing case studies</strong>, successful <strong>SEO campaigns</strong>, beautiful <strong>website designs</strong>, and creative <strong>visual designs</strong> engineered for max performance.
@@ -31,7 +31,7 @@ export default function Works() {
             <a
               id="view-all-projects-btn"
               href="#works"
-              className="inline-flex items-center gap-2 bg-[#FF5B22] hover:bg-[#E04B15] text-white text-sm font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md"
+              className="inline-flex items-center gap-2 bg-[#D03F09] hover:bg-[#B03306] text-white text-sm font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md"
             >
               <span>View All Projects</span>
               <span>→</span>
@@ -64,7 +64,7 @@ export default function Works() {
                 {/* Specific sticker widget for 'Digital Agency' card */}
                 {work.id === 'digital-agency' && (
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer pointer-events-none">
-                    <div className="relative w-20 h-20 md:w-24 md:h-24 bg-[#FF5B22] rounded-full flex items-center justify-center text-white shadow-lg animate-pulse">
+                    <div className="relative w-20 h-20 md:w-24 md:h-24 bg-[#D03F09] rounded-full flex items-center justify-center text-white shadow-lg animate-pulse">
                       <svg className="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 100 100">
                         <defs>
                           <path
@@ -87,7 +87,7 @@ export default function Works() {
 
                 {/* Badge tags overlay */}
                 <div className="absolute top-4 left-4 flex gap-2">
-                  <span className="px-3.5 py-1.5 rounded-full bg-stone-900/80 backdrop-blur-sm border border-stone-700/60 text-xs font-semibold text-[#FF5B22] uppercase tracking-wider">
+                  <span className="px-3.5 py-1.5 rounded-full bg-stone-900/80 backdrop-blur-sm border border-stone-700/60 text-xs font-semibold text-[#D03F09] uppercase tracking-wider">
                     {work.tag}
                   </span>
                 </div>
@@ -101,7 +101,7 @@ export default function Works() {
                   <div className="text-xs font-bold uppercase text-stone-400 tracking-widest">
                     {work.category}
                   </div>
-                  <h3 className="text-2xl font-bold font-display text-white mt-1 group-hover:text-[#FF5B22] transition-colors">
+                  <h3 className="text-2xl font-bold font-display text-white mt-1 group-hover:text-[#D03F09] transition-colors">
                     {work.title}
                   </h3>
                   <p className="text-stone-400 text-sm leading-relaxed mt-2 font-light">
@@ -109,7 +109,7 @@ export default function Works() {
                   </p>
                 </div>
 
-                <div className="pt-4 flex items-center gap-2 text-sm text-[#FF5B22] font-semibold uppercase tracking-wider cursor-pointer group-hover:underline">
+                <div className="pt-4 flex items-center gap-2 text-sm text-[#D03F09] font-semibold uppercase tracking-wider cursor-pointer group-hover:underline">
                   <span>Explore Showcase</span>
                   <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </div>

@@ -33,7 +33,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
             <a
               key={item.label}
               href={item.href}
-              className="hover:text-[#FF5B22] transition-colors relative py-1"
+              className="hover:text-[#D03F09] transition-colors relative py-1"
             >
               {item.label}
             </a>
@@ -45,7 +45,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
           <button
             id="nav-contact-btn"
             onClick={onOpenContact}
-            className="flex items-center gap-2 bg-[#FF5B22] hover:bg-[#E04B15] text-white text-sm font-semibold py-2.5 px-6 rounded-lg transition-all cursor-pointer hover:opacity-95 shadow-sm"
+            className="flex items-center gap-2 bg-[#D03F09] hover:bg-[#B03306] text-white text-sm font-semibold py-2.5 px-6 rounded-lg transition-all cursor-pointer hover:opacity-95 shadow-sm"
           >
             <span>Contact Me</span>
             <span className="text-white">→</span>
@@ -72,7 +72,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-stone-700 hover:text-[#FF5B22] font-medium text-base transition-colors py-1.5 border-b border-stone-100"
+                className="text-stone-700 hover:text-[#D03F09] font-medium text-base transition-colors py-1.5 border-b border-stone-100"
               >
                 {item.label}
               </a>
@@ -83,7 +83,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
                 setIsMobileMenuOpen(false);
                 onOpenContact();
               }}
-              className="w-full flex items-center justify-center gap-2 bg-[#FF5B22] hover:bg-[#E04B15] text-white text-base font-medium py-3 px-5 rounded-xl transition-all cursor-pointer shadow"
+              className="w-full flex items-center justify-center gap-2 bg-[#D03F09] hover:bg-[#B03306] text-white text-base font-medium py-3 px-5 rounded-xl transition-all cursor-pointer shadow"
             >
               <span>Contact Me</span>
               <ArrowRight className="w-5 h-5" />

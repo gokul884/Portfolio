@@ -44,11 +44,23 @@ export function registerFirestoreLoad(cb: () => void): () => void {
   };
 }
 
-export function useFirestoreCollection<T>(collectionName: string, fallbackData: T[]): { data: T[]; loading: boolean } {
+export function useFirestoreCollection<T>(
+  collectionName: string, 
+  fallbackData: T[],
+  options: { enabled?: boolean } = { enabled: true }
+): { data: T[]; loading: boolean } {
   const [data, setData] = useState<T[]>(fallbackData);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const enabled = options?.enabled ?? true;
+
   useEffect(() => {
+    if (enabled === false) {
+      setData(fallbackData);
+      setLoading(false);
+      return;
+    }
+
     let unsubscribe: (() => void) | undefined;
     let isMounted = true;
 
@@ -114,7 +126,7 @@ export function useFirestoreCollection<T>(collectionName: string, fallbackData: 
         unsubscribe();
       }
     };
-  }, [collectionName]);
+  }, [collectionName, enabled]);
 
   return { data, loading };
 }

@@ -129,7 +129,7 @@ export default function Faq() {
   return (
     <section id="faq" className="py-24 bg-white border-b border-stone-200/50 relative overflow-hidden scroll-mt-12">
       {/* Soft geometric background shape */}
-      <div className="absolute top-1/2 left-0 w-[450px] h-[450px] bg-[#FF5B22]/2 rounded-full filter blur-[120px] pointer-events-none -translate-y-1/2" />
+      <div className="absolute top-1/2 left-0 w-[450px] h-[450px] bg-[#D03F09]/2 rounded-full filter blur-[120px] pointer-events-none -translate-y-1/2" />
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -138,7 +138,7 @@ export default function Faq() {
           <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-28">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
-                Frequently Asked <span className="italic text-[#FF5B22] font-extrabold font-display">Questions</span>
+                Frequently Asked <span className="italic text-[#D03F09] font-extrabold font-display">Questions</span>
               </h2>
               <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal max-w-md">
                 Find clear, straightforward answers about on-page search engine optimization, website speed benchmarks, conversion design, and growth content strategies.
@@ -148,7 +148,7 @@ export default function Faq() {
             {/* Mini Contact CTA Card */}
             <div className="bg-[#FAF9F5] border border-stone-200/60 rounded-2xl p-6 max-w-md space-y-4 shadow-sm">
               <div className="space-y-1">
-                <p className="text-xs font-bold text-[#FF5B22] uppercase tracking-wider flex items-center gap-1.5">
+                <p className="text-xs font-bold text-[#D03F09] uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                   Free SEO Consultation
                 </p>
@@ -157,7 +157,7 @@ export default function Faq() {
               </div>
               <button
                 onClick={() => setShowAuditForm(true)}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FF5B22] hover:text-[#E04B15] transition-colors uppercase tracking-wider group cursor-pointer border-none bg-transparent p-0"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D03F09] hover:text-[#B03306] transition-colors uppercase tracking-wider group cursor-pointer border-none bg-transparent p-0"
               >
                 <span>Request audit report</span>
                 <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
@@ -181,12 +181,12 @@ export default function Faq() {
                       aria-expanded={isOpen}
                     >
                       <span className={`font-bold font-display text-base md:text-lg leading-snug transition-colors duration-200 ${
-                        isOpen ? 'text-[#FF5B22]' : 'text-stone-900 group-hover:text-[#FF5B22]'
+                        isOpen ? 'text-[#D03F09]' : 'text-stone-900 group-hover:text-[#D03F09]'
                       }`}>
                         {faq.question}
                       </span>
                       <span className={`p-1.5 rounded-lg border border-stone-200/50 bg-[#FAF9F5] text-stone-500 group-hover:text-stone-900 transition-all ${
-                        isOpen ? 'rotate-180 bg-orange-50 border-orange-200/50 text-[#FF5B22]' : ''
+                        isOpen ? 'rotate-180 bg-orange-50 border-orange-200/50 text-[#D03F09]' : ''
                       }`}>
                         <ChevronDown className="w-4 h-4" />
                       </span>
@@ -211,7 +211,7 @@ export default function Faq() {
                                   key={i}
                                   className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-stone-50 border border-stone-200/40 text-[10px] font-bold text-stone-600"
                                 >
-                                  <CheckCircle className="w-2.5 h-2.5 text-[#FF5B22]" />
+                                  <CheckCircle className="w-2.5 h-2.5 text-[#D03F09]" />
                                   {kw}
                                 </span>
                               ))}
@@ -268,7 +268,7 @@ export default function Faq() {
               {!isSubmitted ? (
                 <form onSubmit={handleAuditSubmit} className="space-y-5">
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-[#FF5B22] uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-[10px] font-bold text-[#D03F09] uppercase tracking-widest">
                       <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                       <span>Google Ranking Optimization</span>
                     </div>
@@ -293,7 +293,7 @@ export default function Faq() {
                         placeholder="Enter your name "
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/10 focus:border-[#FF5B22] transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#D03F09]/10 focus:border-[#D03F09] transition-all"
                       />
                     </div>
                   </div>
@@ -311,7 +311,7 @@ export default function Faq() {
                         placeholder="Enter your Phone Number "
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/10 focus:border-[#FF5B22] transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#D03F09]/10 focus:border-[#D03F09] transition-all"
                       />
                     </div>
                   </div>
@@ -329,7 +329,7 @@ export default function Faq() {
                         placeholder="e.g. you@example.com"
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/10 focus:border-[#FF5B22] transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#D03F09]/10 focus:border-[#D03F09] transition-all"
                       />
                     </div>
                   </div>
@@ -347,7 +347,7 @@ export default function Faq() {
                         placeholder="e.g. https://yourwebsite.com"
                         value={form.webAddress}
                         onChange={(e) => setForm({ ...form, webAddress: e.target.value })}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#FF5B22]/10 focus:border-[#FF5B22] transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-stone-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#D03F09]/10 focus:border-[#D03F09] transition-all"
                       />
                     </div>
                   </div>
@@ -356,7 +356,7 @@ export default function Faq() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 bg-[#FF5B22] hover:bg-[#E04B15] text-white font-bold py-3.5 px-4 rounded-xl transition-colors cursor-pointer text-xs uppercase tracking-wider shadow-sm disabled:opacity-75 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center gap-2 bg-[#D03F09] hover:bg-[#B03306] text-white font-bold py-3.5 px-4 rounded-xl transition-colors cursor-pointer text-xs uppercase tracking-wider shadow-sm disabled:opacity-75 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>

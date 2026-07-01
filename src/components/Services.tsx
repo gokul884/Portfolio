@@ -9,15 +9,15 @@ export default function Services() {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'monitor':
-        return <Monitor className="w-8 h-8 text-[#FF5B22]" />;
+        return <Monitor className="w-8 h-8 text-[#D03F09]" />;
       case 'smartphone':
-        return <Smartphone className="w-8 h-8 text-[#FF5B22]" />;
+        return <Smartphone className="w-8 h-8 text-[#D03F09]" />;
       case 'layers':
-        return <Layers className="w-8 h-8 text-[#FF5B22]" />;
+        return <Layers className="w-8 h-8 text-[#D03F09]" />;
       case 'layout':
-        return <Layout className="w-8 h-8 text-[#FF5B22]" />;
+        return <Layout className="w-8 h-8 text-[#D03F09]" />;
       default:
-        return <Monitor className="w-8 h-8 text-[#FF5B22]" />;
+        return <Monitor className="w-8 h-8 text-[#D03F09]" />;
     }
   };
 
@@ -29,7 +29,7 @@ export default function Services() {
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           
           <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
-            High-Performance <span className="italic text-[#FF5B22] font-extrabold pl-1">SEO & Digital Services</span>
+            High-Performance <span className="italic text-[#D03F09] font-extrabold pl-1">SEO & Digital Services</span>
           </h2>
           
           <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal">
@@ -47,7 +47,7 @@ export default function Services() {
               } ${index < 3 ? 'border-b' : ''} ${index === 2 ? 'md:border-b-0' : ''}`}
             >
               {/* Icon Container - Solid orange circle with white glyph */}
-              <div className="w-16 h-16 rounded-full bg-[#FF5B22] flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 shadow-md shadow-orange-500/10">
+              <div className="w-16 h-16 rounded-full bg-[#D03F09] flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 shadow-md shadow-orange-500/10">
                 {service.iconName === 'monitor' && <Monitor className="w-7 h-7 text-white" />}
                 {service.iconName === 'smartphone' && <Smartphone className="w-7 h-7 text-white" />}
                 {service.iconName === 'layers' && <Layers className="w-7 h-7 text-white" />}

@@ -41,7 +41,7 @@ export default function Blog() {
               <div className="max-w-2xl text-center mx-auto space-y-4 flex flex-col items-center">
                 
                 <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
-                  Expert <span className="italic text-[#FF5B22] font-extrabold">SEO & Marketing Insights</span>
+                  Expert <span className="italic text-[#D03F09] font-extrabold">SEO & Marketing Insights</span>
                 </h2>
                 
                 <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal">

@@ -35,11 +35,11 @@ export default function App() {
     return "";
   });
 
-  // Fetch Firestore Collections for AdminPanel Sync
-  const { data: services } = useFirestoreCollection<ServiceItem>('services', SERVICES_DATA);
-  const { data: works } = useFirestoreCollection<WorkItem>('works', WORKS_DATA);
-  const { data: testimonials } = useFirestoreCollection<TestimonialItem>('testimonials', TESTIMONIALS_DATA);
-  const { data: blogs } = useFirestoreCollection<BlogPostItem>('blogs', BLOGS_DATA);
+  // Fetch Firestore Collections for AdminPanel Sync (only when admin panel is active)
+  const { data: services } = useFirestoreCollection<ServiceItem>('services', SERVICES_DATA, { enabled: isAdminOpen });
+  const { data: works } = useFirestoreCollection<WorkItem>('works', WORKS_DATA, { enabled: isAdminOpen });
+  const { data: testimonials } = useFirestoreCollection<TestimonialItem>('testimonials', TESTIMONIALS_DATA, { enabled: isAdminOpen });
+  const { data: blogs } = useFirestoreCollection<BlogPostItem>('blogs', BLOGS_DATA, { enabled: isAdminOpen });
 
   // Handle URL routing for /admin, #admin, and #/admin
   useEffect(() => {

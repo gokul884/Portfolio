@@ -24,7 +24,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
             <div
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 leading-tight animate-slide-left-2"
             >
-              I'm a <span className="italic text-[#FF5B22] font-extrabold select-none">Digital Marketer & SEO Specialist</span>
+              I'm a <span className="italic text-[#D03F09] font-extrabold select-none">Digital Marketer & SEO Specialist</span>
             </div>
           </div>
 
@@ -46,7 +46,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
               aria-label="Contact Gokul Krisnan for SEO & Digital Marketing Services"
             >
               <span>Get In Touch Today</span>
-              <span className="text-[#FF5B22]">→</span>
+              <span className="text-[#D03F09]">→</span>
             </button>
             <a
               id="hero-secondary-btn"
@@ -85,7 +85,7 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
               </svg>
               {/* Inner arrow */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-10 h-10 bg-[#FF5B22] rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300 shadow">
+                <div className="w-10 h-10 bg-[#D03F09] rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300 shadow">
                   <ArrowUpRight className="w-5 h-5" />
                 </div>
               </div>
@@ -107,12 +107,12 @@ export default function Hero({ onOpenContact, heroPhotoUrl }: HeroProps) {
                 fetchPriority="high"
               />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-[#FF5B22]/10 via-[#F5EFE6] to-[#FF5B22]/5 flex flex-col items-center justify-center p-8 text-center select-none">
+              <div className="w-full h-full bg-gradient-to-br from-[#D03F09]/10 via-[#F5EFE6] to-[#D03F09]/5 flex flex-col items-center justify-center p-8 text-center select-none">
                 <div className="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center border border-stone-100 mb-4 transform group-hover:scale-105 transition-transform duration-500">
-                  <span className="text-2xl font-extrabold font-display text-[#FF5B22] tracking-wider">GK</span>
+                  <span className="text-2xl font-extrabold font-display text-[#D03F09] tracking-wider">GK</span>
                 </div>
                 <p className="text-lg font-bold text-stone-800 font-display leading-tight">Gokul Krisnan</p>
-                <p className="text-[11px] font-semibold text-[#FF5B22] uppercase tracking-widest mt-1">Digital Marketer</p>
+                <p className="text-[11px] font-semibold text-[#D03F09] uppercase tracking-widest mt-1">Digital Marketer</p>
                 <div className="mt-5 flex flex-wrap justify-center gap-1.5">
                   <span className="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">SEO</span>
                   <span className="text-[9px] font-bold bg-white/85 border border-stone-100 px-2 py-0.5 rounded-full text-stone-600">Web Design</span>

@@ -54,13 +54,13 @@ export default function Testimonials() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/60 border border-orange-200/50 text-[#FF5B22] text-xs font-bold uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5B22]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/60 border border-orange-200/50 text-[#D03F09] text-xs font-bold uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D03F09]" />
             <span>Testimonials</span>
           </div>
           
           <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
-            What Our <span className="italic text-[#FF5B22] font-extrabold pl-1">Customers</span> Saying
+            What Our <span className="italic text-[#D03F09] font-extrabold pl-1">Customers</span> Saying
           </h2>
           
           <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal">

@@ -10,13 +10,13 @@ export default function Experiences() {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'monitor':
-        return <Monitor className="w-6 h-6 text-[#FF5B22]" />;
+        return <Monitor className="w-6 h-6 text-[#D03F09]" />;
       case 'smartphone':
-        return <Smartphone className="w-6 h-6 text-[#FF5B22]" />;
+        return <Smartphone className="w-6 h-6 text-[#D03F09]" />;
       case 'layout':
-        return <Layout className="w-6 h-6 text-[#FF5B22]" />;
+        return <Layout className="w-6 h-6 text-[#D03F09]" />;
       default:
-        return <Monitor className="w-6 h-6 text-[#FF5B22]" />;
+        return <Monitor className="w-6 h-6 text-[#D03F09]" />;
     }
   };
 
@@ -29,7 +29,7 @@ export default function Experiences() {
           
           <h2 className="text-3xl md:text-5xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
             Core Specialized <br />
-            <span className="italic text-[#FF5B22] font-extrabold pl-1">Professional Skills</span>
+            <span className="italic text-[#D03F09] font-extrabold pl-1">Professional Skills</span>
           </h2>
           
           <p className="text-stone-600 text-sm md:text-base leading-relaxed font-normal">
@@ -51,7 +51,7 @@ export default function Experiences() {
               <div className="space-y-6">
                 
                 {/* Icon Container - Left Aligned Solid Orange Circle with White Glyph */}
-                <div className="w-14 h-14 rounded-full bg-[#FF5B22] flex items-center justify-center transform group-hover:scale-105 transition-transform shadow-md shadow-orange-500/10">
+                <div className="w-14 h-14 rounded-full bg-[#D03F09] flex items-center justify-center transform group-hover:scale-105 transition-transform shadow-md shadow-orange-500/10">
                   {skill.iconName === 'monitor' && <Monitor className="w-6 h-6 text-white" />}
                   {skill.iconName === 'smartphone' && <Smartphone className="w-6 h-6 text-white" />}
                   {skill.iconName === 'layout' && <Layout className="w-6 h-6 text-white" />}

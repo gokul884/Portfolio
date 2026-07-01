@@ -24,7 +24,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
         <div className="bg-[#F5EFE6]/50 border border-stone-200/60 rounded-3xl p-10 md:p-16 text-center space-y-6 max-w-4xl mx-auto shadow-sm relative overflow-hidden bg-dot-grid">
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-stone-900 tracking-tight leading-tight">
-            Have a Dream <span className="italic text-[#FF5B22] font-extrabold pl-1">Project?</span>
+            Have a Dream <span className="italic text-[#D03F09] font-extrabold pl-1">Project?</span>
           </h2>
           
           <p className="text-stone-600 text-sm md:text-base max-w-xl mx-auto font-normal leading-relaxed">
@@ -35,7 +35,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
             <button
               id="footer-contact-btn"
               onClick={onOpenContact}
-              className="inline-flex items-center gap-2 bg-[#FF5B22] hover:bg-[#E04B15] text-white text-base font-semibold py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md cursor-pointer"
+              className="inline-flex items-center gap-2 bg-[#D03F09] hover:bg-[#B03306] text-white text-base font-semibold py-3.5 px-8 rounded-lg transition-all duration-300 shadow-md cursor-pointer"
             >
               <span>Contact Me</span>
               <span>→</span>
@@ -53,7 +53,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm font-semibold text-stone-600 hover:text-[#FF5B22] transition-colors"
+                className="text-sm font-semibold text-stone-600 hover:text-[#D03F09] transition-colors"
               >
                 {item.label}
               </a>
@@ -67,7 +67,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
               href="https://x.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-white border border-stone-200 rounded-full flex items-center justify-center text-stone-700 hover:text-[#FF5B22] hover:border-[#FF5B22]/30 hover:shadow-sm transition-all"
+              className="w-10 h-10 bg-white border border-stone-200 rounded-full flex items-center justify-center text-stone-700 hover:text-[#D03F09] hover:border-[#D03F09]/30 hover:shadow-sm transition-all"
               aria-label="X (formerly Twitter)"
             >
               {/* Minimal SVG for X icon */}
@@ -80,7 +80,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-white border border-stone-200 rounded-full flex items-center justify-center text-stone-700 hover:text-[#FF5B22] hover:border-[#FF5B22]/30 hover:shadow-sm transition-all"
+              className="w-10 h-10 bg-white border border-stone-200 rounded-full flex items-center justify-center text-stone-700 hover:text-[#D03F09] hover:border-[#D03F09]/30 hover:shadow-sm transition-all"
               aria-label="Instagram"
             >
               <Instagram className="w-4.5 h-4.5" />
